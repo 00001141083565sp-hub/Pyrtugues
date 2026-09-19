@@ -1,92 +1,151 @@
-========================================
-              🐍 PYRTUGUES
-       	    Python em português
-========================================
+# 🐍 Pyrtugues
 
-📌 SOBRE O PROJETO
+### Python em português para aprender programação
 
-O Pyrtugues é um projeto educacional criado para
-facilitar o aprendizado de programação.
+O **Pyrtugues** é um projeto educacional criado para facilitar o aprendizado de programação, permitindo que iniciantes escrevam comandos em **português**, mantendo a lógica da linguagem **Python**.
 
-A ideia é permitir que iniciantes escrevam comandos
-em português, mantendo a lógica da linguagem Python.
+A ideia é criar uma ponte entre o primeiro contato com programação e o aprendizado posterior da sintaxe tradicional do Python.
 
-Exemplo:
+---
 
-    se idade maior que 10:
-        mostrar("Olá!")
+## 📌 Como funciona?
 
-O Pyrtugues transforma isso em Python:
+No Pyrtugues, você pode escrever:
 
-    if idade > 10:
-        print("Olá!")
+```python
+se idade maior que 10:
+    mostrar("Olá!")
+```
 
+O Pyrtugues transforma o código para Python:
 
-🎯 OBJETIVO
+```python
+if idade > 10:
+    print("Olá!")
+```
 
-O objetivo do Pyrtugues é servir como uma ponte entre
-o aprendizado inicial de programação e o Python.
+Assim, o aluno pode aprender conceitos como **variáveis, condições, repetições, funções e lógica de programação** usando uma sintaxe em português.
 
-Em vez de aprender uma lógica completamente diferente,
-o aluno aprende conceitos de programação usando uma
-sintaxe em português e posteriormente pode conhecer
-a sintaxe tradicional do Python.
+---
 
+## 🎯 Objetivo
 
-🚀 COMO USAR
+O objetivo do Pyrtugues é tornar o primeiro contato com programação mais acessível, especialmente para **estudantes, crianças e iniciantes**.
+
+Em vez de aprender uma lógica completamente diferente, o aluno aprende os conceitos fundamentais da programação em português e pode, posteriormente, fazer a transição para a sintaxe tradicional do Python.
+
+---
+
+## 🚀 Como usar
 
 1. Abra o Pyrtugues.
 2. Escreva seu código no editor.
-3. Clique em "Executar" ou pressione Ctrl + Enter.
+3. Clique em **Executar** ou pressione `Ctrl + Enter`.
 4. Veja o resultado na área de saída.
 
-Exemplo:
+### Exemplo
 
-    nome = pergunte("Qual é seu nome? ")
-    mostrar("Olá,", nome)
+```python
+nome = pergunte("Qual é seu nome? ")
+mostrar("Olá,", nome)
+```
 
+---
 
-📚 ALGUNS COMANDOS
+## 📚 Alguns comandos
 
-    mostrar()       → print()
-    pergunte()      → input()
-    se              → if
-    senão           → else
-    enquanto        → while
-    para            → for
-    função          → def
-    retornar        → return
-    verdadeiro      → True
-    falso           → False
+| Pyrtugues    | Python    |
+| ------------ | --------- |
+| `mostrar()`  | `print()` |
+| `pergunte()` | `input()` |
+| `se`         | `if`      |
+| `senão`      | `else`    |
+| `enquanto`   | `while`   |
+| `para`       | `for`     |
+| `função`     | `def`     |
+| `retornar`   | `return`  |
+| `verdadeiro` | `True`    |
+| `falso`      | `False`   |
 
+> O projeto está em desenvolvimento e a quantidade de comandos e recursos suportados pode mudar conforme novas versões forem lançadas.
 
-👨‍💻 SOBRE O CRIADOR
+---
 
-O Pyrtugues foi criado por Vinicius caracciolo dos santos.
+## 💻 Tecnologias
 
-O projeto nasceu com a ideia de tornar a programação
-mais acessível para quem está começando, especialmente
-para estudantes e crianças.
+* **Python**
+* **CustomTkinter**
+* Interface gráfica para desktop
+* Tradutor de sintaxe Pyrtugues → Python
 
-A proposta é aprender programação em português sem
-se afastar da lógica do Python.
+---
 
+## 📦 Instalação
 
-⚠️ IMPORTANTE
+Para usuários do Windows, o Pyrtugues pode ser distribuído através de um instalador `.exe`.
 
-O Pyrtugues é um projeto em desenvolvimento.
+### Windows
 
-Novos recursos, melhorias e correções podem ser
-adicionados ao longo do tempo.
+Baixe a versão mais recente na seção de **Releases** do GitHub.
 
+**Versão atual:** `v1.0.0`
 
-📦 PROJETO
+Após instalar, abra o Pyrtugues pelo menu Iniciar ou pelo atalho criado pelo instalador.
 
-Nome: Pyrtugues
-Objetivo: Educação e introdução à programação
-Base: Python
-Interface: CustomTkinter
+---
 
-========================================
-              Pyrtugues 🐍
-========================================
+## 🧑‍💻 Desenvolvimento
+
+O código-fonte principal está disponível neste repositório.
+
+Para executar o projeto diretamente pelo código-fonte, é necessário ter Python instalado.
+
+O projeto utiliza **CustomTkinter** para a interface gráfica.
+
+---
+
+## ⚠️ Status do projeto
+
+🚧 **Em desenvolvimento**
+
+O Pyrtugues ainda está recebendo melhorias, novos recursos, correções e testes.
+
+Algumas funcionalidades podem mudar ou apresentar limitações nas versões iniciais.
+
+---
+
+## 👨‍💻 Criador
+
+O Pyrtugues foi criado por **Vinicius Caracciolo dos Santos**.
+
+O projeto nasceu com a ideia de tornar a programação mais acessível para quem está começando, especialmente estudantes e crianças.
+
+---
+
+## 📄 Licença
+
+Este projeto é distribuído sob a **MIT License**.
+
+Consulte o arquivo [`LICENSE`](LICENSE) para obter os termos completos da licença.
+
+---
+
+## 🌐 Site
+
+Acesse o site do Pyrtugues:
+
+**https://alucard676968-coder.github.io/Pyrtugues/**
+
+---
+
+## 📥 Download
+
+As versões do Pyrtugues podem ser encontradas na página de **Releases** do repositório.
+
+---
+
+### 🐍 Pyrtugues
+
+**Programação em português.
+Lógica de Python.
+Feito para aprender.**
