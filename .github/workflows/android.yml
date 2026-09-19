@@ -1,0 +1,125 @@
+name: Build Pyrtugues APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependências do sistema
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            git \
+            zip \
+            unzip \
+            openjdk-17-jdk \
+            autoconf \
+            libtool \
+            pkg-config \
+            zlib1g-dev \
+            libncurses5-dev \
+            libncursesw5-dev \
+            cmake \
+            libffi-dev \
+            libssl-dev
+
+      - name: Instalar Buildozer
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install --upgrade buildozer cython==0.29.37
+
+      - name: Criar buildozer.spec
+        run: |
+          buildozer init
+
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path("buildozer.spec")
+          s = p.read_text()
+
+          s = s.replace(
+              "title = My Application",
+              "title = Pyrtugues"
+          )
+
+          s = s.replace(
+              "package.name = myapp",
+              "package.name = pyrtugues"
+          )
+
+          s = s.replace(
+              "package.domain = org.test",
+              "package.domain = org.pyrtugues"
+          )
+
+          s = s.replace(
+              "requirements = python3,kivy",
+              "requirements = python3,kivy"
+          )
+
+          s = s.replace(
+              "#source.include_exts = py,png,jpg,kv,atlas",
+              "source.include_exts = py,png,jpg,kv,atlas,ttf,otf"
+          )
+
+          s = s.replace(
+              "#orientation = portrait",
+              "orientation = portrait"
+          )
+
+          s = s.replace(
+              "#android.api = 33",
+              "android.api = 33"
+          )
+
+          s = s.replace(
+              "#android.minapi = 21",
+              "android.minapi = 24"
+          )
+
+          s = s.replace(
+              "#android.archs = arm64-v8a, armeabi-v7a",
+              "android.archs = arm64-v8a"
+          )
+
+          p.write_text(s)
+          PY
+
+      - name: Verificar arquivos
+        run: |
+          echo "Arquivos do projeto:"
+          ls -la
+
+          echo ""
+          echo "Buildozer:"
+          grep -E "^(title|package.name|package.domain|requirements|orientation|android.api|android.minapi|android.archs)" buildozer.spec
+
+      - name: Gerar APK
+        run: |
+          buildozer -v android debug
+
+      - name: Procurar APK
+        run: |
+          find bin -type f -name "*.apk" -print
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pyrtugues-APK
+          path: bin/*.apk
+          if-no-files-found: error
