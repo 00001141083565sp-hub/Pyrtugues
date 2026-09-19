@@ -62,7 +62,7 @@ Exemplo:
 
 👨‍💻 SOBRE O CRIADOR
 
-O Pyrtugues foi criado por [SEU NOME].
+O Pyrtugues foi criado por Vinicius caracciolo dos santos.
 
 O projeto nasceu com a ideia de tornar a programação
 mais acessível para quem está começando, especialmente
