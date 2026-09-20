@@ -8,30 +8,30 @@ on:
 
 jobs:
   build-apk:
-    name: Gerar APK Android
+    name: 📱 Gerar APK do Pyrtugues
     runs-on: ubuntu-22.04
 
     steps:
 
-      # ============================================================
-      # 1. Baixar o projeto
-      # ============================================================
+      # ==========================================================
+      # 1. BAIXAR O PROJETO
+      # ==========================================================
       - name: 📥 Baixar código
         uses: actions/checkout@v4
 
 
-      # ============================================================
-      # 2. Python usado PELO GITHUB
-      # ============================================================
+      # ==========================================================
+      # 2. PYTHON DO GITHUB
+      # ==========================================================
       - name: 🐍 Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
 
-      # ============================================================
-      # 3. Dependências do Linux
-      # ============================================================
+      # ==========================================================
+      # 3. DEPENDÊNCIAS DO LINUX
+      # ==========================================================
       - name: 📦 Instalar dependências
         run: |
           sudo apt-get update
@@ -52,19 +52,44 @@ jobs:
             libffi-dev \
             libssl-dev
 
+
+      # ==========================================================
+      # 4. FORÇAR JAVA 17
+      # ==========================================================
       - name: ☕ Configurar Java 17
         run: |
-          echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> $GITHUB_ENV
-          echo "/usr/lib/jvm/temurin-17-jdk-amd64/bin" >> $GITHUB_PATH
-
-          export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+          echo "=== Java disponível ==="
 
           java -version
+
+          echo ""
+          echo "=== Localização do Java ==="
+
+          JAVA17=$(dirname "$(dirname "$(readlink -f "$(which java)")")")
+
+          echo "Java encontrado em:"
+          echo "$JAVA17"
+
+          echo ""
+          echo "=== Configurando JAVA_HOME ==="
+
+          echo "JAVA_HOME=$JAVA17" >> "$GITHUB_ENV"
+          echo "$JAVA17/bin" >> "$GITHUB_PATH"
+
+          export JAVA_HOME="$JAVA17"
+
+          echo ""
           echo "JAVA_HOME=$JAVA_HOME"
 
-      # ============================================================
-      # 4. Instalar ferramentas Python
-      # ============================================================
+          echo ""
+          echo "=== Java final ==="
+
+          java -version
+
+
+      # ==========================================================
+      # 5. INSTALAR BUILDOZER + CYTHON
+      # ==========================================================
       - name: 🔧 Instalar Buildozer
         run: |
           python -m pip install --upgrade pip setuptools wheel
@@ -74,45 +99,68 @@ jobs:
             cython==0.29.37
 
 
-      # ============================================================
-      # 5. Conferir ambiente
-      # ============================================================
+      # ==========================================================
+      # 6. VERIFICAR AMBIENTE
+      # ==========================================================
       - name: 🔍 Verificar ambiente
         run: |
-          echo "======================================"
+          echo "=========================================="
           echo "PYTHON"
-          echo "======================================"
+          echo "=========================================="
+
           python --version
 
           echo ""
-          echo "======================================"
-          echo "PIP"
-          echo "======================================"
-          python -m pip --version
+          echo "=========================================="
+          echo "JAVA"
+          echo "=========================================="
+
+          java -version
 
           echo ""
-          echo "======================================"
+          echo "JAVA_HOME=$JAVA_HOME"
+
+          echo ""
+          echo "=========================================="
           echo "BUILDOZER"
-          echo "======================================"
+          echo "=========================================="
+
           buildozer --version
 
           echo ""
-          echo "======================================"
+          echo "=========================================="
           echo "CYTHON"
-          echo "======================================"
+          echo "=========================================="
+
           cython --version
 
           echo ""
-          echo "======================================"
-          echo "ARQUIVOS DO PROJETO"
-          echo "======================================"
+          echo "=========================================="
+          echo "ARQUIVOS"
+          echo "=========================================="
+
           ls -lah
 
+          echo ""
+          echo "=========================================="
+          echo "MAIN.PY"
+          echo "=========================================="
 
-      # ============================================================
-      # 6. Criar buildozer.spec
-      # ============================================================
-      - name: ⚙️ Configurar Buildozer
+          if [ ! -f main.py ]; then
+            echo "❌ ERRO: main.py não existe na raiz do projeto."
+            exit 1
+          fi
+
+          echo "✅ main.py encontrado."
+
+          wc -l main.py
+          ls -lh main.py
+
+
+      # ==========================================================
+      # 7. CRIAR BUILDOZER.SPEC
+      # ==========================================================
+      - name: ⚙️ Criar configuração Android
         run: |
 
           buildozer init
@@ -123,9 +171,9 @@ jobs:
           p = Path("buildozer.spec")
           s = p.read_text()
 
-          # --------------------------------------------------------
-          # Informações do aplicativo
-          # --------------------------------------------------------
+          # ------------------------------------------------------
+          # Aplicativo
+          # ------------------------------------------------------
 
           s = s.replace(
               "title = My Application",
@@ -142,36 +190,36 @@ jobs:
               "package.domain = org.pyrtugues"
           )
 
-          # --------------------------------------------------------
+          # ------------------------------------------------------
           # Python + Kivy
-          # --------------------------------------------------------
+          # ------------------------------------------------------
 
           s = s.replace(
               "requirements = python3,kivy",
               "requirements = python3==3.11.9,kivy"
           )
 
-          # --------------------------------------------------------
-          # Arquivos incluídos
-          # --------------------------------------------------------
+          # ------------------------------------------------------
+          # Arquivos
+          # ------------------------------------------------------
 
           s = s.replace(
               "#source.include_exts = py,png,jpg,kv,atlas",
               "source.include_exts = py,png,jpg,kv,atlas,ttf,otf"
           )
 
-          # --------------------------------------------------------
-          # Orientação
-          # --------------------------------------------------------
+          # ------------------------------------------------------
+          # Tela vertical
+          # ------------------------------------------------------
 
           s = s.replace(
               "#orientation = portrait",
               "orientation = portrait"
           )
 
-          # --------------------------------------------------------
+          # ------------------------------------------------------
           # Android
-          # --------------------------------------------------------
+          # ------------------------------------------------------
 
           s = s.replace(
               "#android.api = 33",
@@ -183,14 +231,18 @@ jobs:
               "android.minapi = 24"
           )
 
+          # ------------------------------------------------------
+          # Arquitetura
+          # ------------------------------------------------------
+
           s = s.replace(
               "#android.archs = arm64-v8a, armeabi-v7a",
               "android.archs = arm64-v8a"
           )
 
-          # --------------------------------------------------------
+          # ------------------------------------------------------
           # Fixar python-for-android
-          # --------------------------------------------------------
+          # ------------------------------------------------------
 
           s = s.replace(
               "#p4a.commit = HEAD",
@@ -201,63 +253,85 @@ jobs:
           PY
 
 
-      # ============================================================
-      # 7. Conferir buildozer.spec ANTES DO BUILD
-      # ============================================================
-      - name: 🔎 Conferir configuração
+      # ==========================================================
+      # 8. CONFERIR CONFIGURAÇÃO
+      # ==========================================================
+      - name: 🔎 Conferir buildozer.spec
         run: |
 
-          echo "======================================"
+          echo "=========================================="
           echo "BUILDOZER.SPEC"
-          echo "======================================"
+          echo "=========================================="
 
           grep -E \
             "^(title|package.name|package.domain|requirements|source.include_exts|orientation|android.api|android.minapi|android.archs|p4a.commit)" \
             buildozer.spec
 
           echo ""
-          echo "======================================"
-          echo "MAIN.PY"
-          echo "======================================"
+          echo "=========================================="
+          echo "JAVA ANTES DO BUILD"
+          echo "=========================================="
 
-          if [ -f main.py ]; then
-            echo "main.py encontrado ✅"
-            wc -l main.py
-            ls -lh main.py
-          else
-            echo "ERRO: main.py não encontrado ❌"
-            exit 1
-          fi
+          echo "JAVA_HOME=$JAVA_HOME"
+
+          java -version
 
 
-      # ============================================================
-      # 8. Limpar restos de builds anteriores
-      # ============================================================
-      - name: 🧹 Limpar build anterior
+      # ==========================================================
+      # 9. LIMPAR BUILD ANTERIOR
+      # ==========================================================
+      - name: 🧹 Limpar ambiente de build
         run: |
           rm -rf .buildozer
           rm -rf bin
 
+          echo "Ambiente limpo."
 
-      # ============================================================
-      # 9. GERAR APK
-      # ============================================================
+
+      # ==========================================================
+      # 10. GERAR APK
+      # ==========================================================
       - name: 🚀 Gerar APK
         run: |
           set -o pipefail
 
+          echo "=========================================="
+          echo "INICIANDO BUILD"
+          echo "=========================================="
+
+          echo ""
+          echo "Java:"
+          java -version
+
+          echo ""
+          echo "JAVA_HOME:"
+          echo "$JAVA_HOME"
+
+          echo ""
+          echo "Python:"
+          python --version
+
+          echo ""
+          echo "Buildozer:"
+          buildozer --version
+
+          echo ""
+          echo "=========================================="
+          echo "BUILD ANDROID"
+          echo "=========================================="
+
           yes | buildozer -v android debug
 
 
-      # ============================================================
-      # 10. Procurar APK
-      # ============================================================
+      # ==========================================================
+      # 11. VERIFICAR APK
+      # ==========================================================
       - name: 🔍 Procurar APK
         run: |
 
-          echo "======================================"
+          echo "=========================================="
           echo "APKs GERADOS"
-          echo "======================================"
+          echo "=========================================="
 
           find bin \
             -type f \
@@ -269,16 +343,21 @@ jobs:
           APK_COUNT=$(find bin -type f -name "*.apk" | wc -l)
 
           if [ "$APK_COUNT" -eq 0 ]; then
-            echo "ERRO: nenhum APK foi gerado ❌"
+            echo "❌ Nenhum APK foi encontrado."
             exit 1
           fi
 
-          echo "APK encontrado ✅"
+          echo "✅ APK encontrado!"
+
+          echo ""
+          echo "Tamanho:"
+
+          ls -lh bin/*.apk
 
 
-      # ============================================================
-      # 11. Publicar APK para download
-      # ============================================================
+      # ==========================================================
+      # 12. PUBLICAR APK
+      # ==========================================================
       - name: 📱 Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
