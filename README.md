@@ -1,19 +1,27 @@
-# 🐍 Pyrtugues — Python em Português para Aprender Programação
+# 🐍 Pyrtugues
 
-### Linguagem de programação educacional baseada na lógica do Python
+### Python em português para aprender programação
 
-O **Pyrtugues** é um projeto educacional criado para facilitar o aprendizado de **programação e lógica de programação**, permitindo que iniciantes escrevam comandos em **português**, mantendo conceitos e estruturas próximas da linguagem **Python**.
+> **Programar em português → entender a lógica → enxergar o Python → aprender Python.**
 
-A proposta do Pyrtugues é criar uma **ponte entre o primeiro contato com programação e o aprendizado posterior do Python**, reduzindo a dificuldade inicial causada pela sintaxe de uma linguagem de programação em inglês.
+O **Pyrtugues** é um projeto educacional criado para facilitar o aprendizado de **programação e lógica de programação**, permitindo que iniciantes escrevam comandos em **português**, mantendo uma estrutura e uma lógica próximas da linguagem **Python**.
+
+A proposta é criar uma ponte entre o primeiro contato com programação e o aprendizado posterior da sintaxe tradicional do Python.
 
 ---
 
-## 📌 O que é o Pyrtugues?
+## 🌟 O que é o Pyrtugues?
 
-O Pyrtugues é uma linguagem/sintaxe educacional em português inspirada na estrutura do Python.
+O Pyrtugues é uma **sintaxe educacional em português baseada na lógica do Python**.
 
-Em vez de começar diretamente com:
+A ideia é reduzir a dificuldade inicial causada por uma linguagem de programação em inglês, permitindo que o estudante primeiro compreenda conceitos fundamentais de programação usando palavras em português.
+
+Por exemplo:
+
+### 🐍 Pyrtugues
 
 ```python
-if idade > 10:
-    print("Olá!")
+idade = 12
+
+se idade maior que 10:
+    mostrar("Você pode programar!")
