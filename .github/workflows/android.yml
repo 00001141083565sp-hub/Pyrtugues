@@ -52,6 +52,15 @@ jobs:
             libffi-dev \
             libssl-dev
 
+      - name: ☕ Configurar Java 17
+        run: |
+          echo "JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64" >> $GITHUB_ENV
+          echo "/usr/lib/jvm/temurin-17-jdk-amd64/bin" >> $GITHUB_PATH
+
+          export JAVA_HOME=/usr/lib/jvm/temurin-17-jdk-amd64
+
+          java -version
+          echo "JAVA_HOME=$JAVA_HOME"
 
       # ============================================================
       # 4. Instalar ferramentas Python
