@@ -25,3 +25,9 @@ idade = 12
 
 se idade maior que 10:
     mostrar("Você pode programar!")
+
+```python
+idade = 12
+
+if idade > 10:
+    print("Você pode programar!")
