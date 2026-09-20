@@ -8,20 +8,35 @@ on:
 
 jobs:
   build-apk:
+    name: Gerar APK Android
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Baixar código
+
+      # ============================================================
+      # 1. Baixar o projeto
+      # ============================================================
+      - name: 📥 Baixar código
         uses: actions/checkout@v4
 
-      - name: Configurar Python
+
+      # ============================================================
+      # 2. Python usado PELO GITHUB
+      # ============================================================
+      - name: 🐍 Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip"
 
-      - name: Instalar dependências do sistema
+
+      # ============================================================
+      # 3. Dependências do Linux
+      # ============================================================
+      - name: 📦 Instalar dependências
         run: |
           sudo apt-get update
+
           sudo apt-get install -y \
             git \
             zip \
@@ -34,18 +49,64 @@ jobs:
             zlib1g-dev \
             libncurses5-dev \
             libncursesw5-dev \
-            libtinfo5 \
             cmake \
             libffi-dev \
             libssl-dev
 
-      - name: Instalar Buildozer
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install buildozer cython==0.29.37
 
-      - name: Criar buildozer.spec
+      # ============================================================
+      # 4. Instalar ferramentas Python
+      # ============================================================
+      - name: 🔧 Instalar Buildozer
         run: |
+          python -m pip install --upgrade pip setuptools wheel
+
+          python -m pip install \
+            buildozer \
+            cython==0.29.37
+
+
+      # ============================================================
+      # 5. Conferir ambiente
+      # ============================================================
+      - name: 🔍 Verificar ambiente
+        run: |
+          echo "======================================"
+          echo "PYTHON"
+          echo "======================================"
+          python --version
+
+          echo ""
+          echo "======================================"
+          echo "PIP"
+          echo "======================================"
+          python -m pip --version
+
+          echo ""
+          echo "======================================"
+          echo "BUILDOZER"
+          echo "======================================"
+          buildozer --version
+
+          echo ""
+          echo "======================================"
+          echo "CYTHON"
+          echo "======================================"
+          cython --version
+
+          echo ""
+          echo "======================================"
+          echo "ARQUIVOS DO PROJETO"
+          echo "======================================"
+          ls -lah
+
+
+      # ============================================================
+      # 6. Criar buildozer.spec
+      # ============================================================
+      - name: ⚙️ Configurar Buildozer
+        run: |
+
           buildozer init
 
           python - <<'PY'
@@ -53,6 +114,10 @@ jobs:
 
           p = Path("buildozer.spec")
           s = p.read_text()
+
+          # --------------------------------------------------------
+          # Informações do aplicativo
+          # --------------------------------------------------------
 
           s = s.replace(
               "title = My Application",
@@ -69,20 +134,36 @@ jobs:
               "package.domain = org.pyrtugues"
           )
 
+          # --------------------------------------------------------
+          # Python + Kivy
+          # --------------------------------------------------------
+
           s = s.replace(
               "requirements = python3,kivy",
-              "requirements = python3==3.11.9,hostpython3==3.11.9,kivy"
+              "requirements = python3==3.11.9,kivy"
           )
+
+          # --------------------------------------------------------
+          # Arquivos incluídos
+          # --------------------------------------------------------
 
           s = s.replace(
               "#source.include_exts = py,png,jpg,kv,atlas",
               "source.include_exts = py,png,jpg,kv,atlas,ttf,otf"
           )
 
+          # --------------------------------------------------------
+          # Orientação
+          # --------------------------------------------------------
+
           s = s.replace(
               "#orientation = portrait",
               "orientation = portrait"
           )
+
+          # --------------------------------------------------------
+          # Android
+          # --------------------------------------------------------
 
           s = s.replace(
               "#android.api = 33",
@@ -99,11 +180,9 @@ jobs:
               "android.archs = arm64-v8a"
           )
 
-          # Fixar python-for-android em uma versão que usa Python 3.11
-          s = s.replace(
-              "#p4a.branch = master",
-              "p4a.branch = v2024.01.21"
-          )
+          # --------------------------------------------------------
+          # Fixar python-for-android
+          # --------------------------------------------------------
 
           s = s.replace(
               "#p4a.commit = HEAD",
@@ -113,27 +192,86 @@ jobs:
           p.write_text(s)
           PY
 
-      - name: Verificar configuração
+
+      # ============================================================
+      # 7. Conferir buildozer.spec ANTES DO BUILD
+      # ============================================================
+      - name: 🔎 Conferir configuração
         run: |
-          echo "=== Arquivos ==="
-          ls -la
+
+          echo "======================================"
+          echo "BUILDOZER.SPEC"
+          echo "======================================"
+
+          grep -E \
+            "^(title|package.name|package.domain|requirements|source.include_exts|orientation|android.api|android.minapi|android.archs|p4a.commit)" \
+            buildozer.spec
 
           echo ""
-          echo "=== Configuração ==="
-          grep -E "^(title|package.name|package.domain|requirements|orientation|android.api|android.minapi|android.archs|p4a.branch|p4a.commit)" buildozer.spec
+          echo "======================================"
+          echo "MAIN.PY"
+          echo "======================================"
+
+          if [ -f main.py ]; then
+            echo "main.py encontrado ✅"
+            wc -l main.py
+            ls -lh main.py
+          else
+            echo "ERRO: main.py não encontrado ❌"
+            exit 1
+          fi
 
 
-      - name: Gerar APK
+      # ============================================================
+      # 8. Limpar restos de builds anteriores
+      # ============================================================
+      - name: 🧹 Limpar build anterior
+        run: |
+          rm -rf .buildozer
+          rm -rf bin
+
+
+      # ============================================================
+      # 9. GERAR APK
+      # ============================================================
+      - name: 🚀 Gerar APK
         run: |
           set -o pipefail
+
           yes | buildozer -v android debug
 
-      - name: Procurar APK
-        run: |
-          echo "=== APKs encontrados ==="
-          find bin -type f -name "*.apk" -print
 
-      - name: Disponibilizar APK
+      # ============================================================
+      # 10. Procurar APK
+      # ============================================================
+      - name: 🔍 Procurar APK
+        run: |
+
+          echo "======================================"
+          echo "APKs GERADOS"
+          echo "======================================"
+
+          find bin \
+            -type f \
+            -name "*.apk" \
+            -print
+
+          echo ""
+
+          APK_COUNT=$(find bin -type f -name "*.apk" | wc -l)
+
+          if [ "$APK_COUNT" -eq 0 ]; then
+            echo "ERRO: nenhum APK foi gerado ❌"
+            exit 1
+          fi
+
+          echo "APK encontrado ✅"
+
+
+      # ============================================================
+      # 11. Publicar APK para download
+      # ============================================================
+      - name: 📱 Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
           name: Pyrtugues-APK
