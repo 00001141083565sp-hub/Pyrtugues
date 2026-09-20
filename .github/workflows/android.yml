@@ -111,7 +111,8 @@ jobs:
 
       - name: Gerar APK
         run: |
-          buildozer -v android debug
+          set -o pipefail
+          yes | buildozer -v android debug
 
       - name: Procurar APK
         run: |
