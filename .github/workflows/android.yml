@@ -122,11 +122,6 @@ jobs:
           echo "=== Configuração ==="
           grep -E "^(title|package.name|package.domain|requirements|orientation|android.api|android.minapi|android.archs|p4a.branch|p4a.commit)" buildozer.spec
 
-      - name: Aceitar licenças Android
-        run: |
-          mkdir -p "$HOME/.buildozer/android/platform/android-sdk/licenses"
-
-          yes | sdkmanager --licenses || true
 
       - name: Gerar APK
         run: |
