@@ -80,7 +80,7 @@ O projeto também possui uma versão distribuída como **`.exe`** para Windows.
 
 A versão publicada no repositório possui a release:
 
-**v1.0.0**
+**v1.2.0**
 
 Download direto:
 
