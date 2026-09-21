@@ -2,8 +2,22 @@
 <html lang="pt-BR" class="dark scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+    <link rel="icon" type="image/png" href="assets/logo-pyrtugues.png">
     <title>Pyrtugues - Programação em Português para Todos</title>
+    
+    <!-- Meta SEO & Social -->
+    <meta name="description" content="Conheça o Pyrtugues: uma forma de aprender lógica de programação em português e fazer a ponte para o Python.">
+    <meta property="og:title" content="Pyrtugues - Programação em Português">
+    <meta property="og:description" content="Aprenda a lógica do Python em português e continue no editor web do Pyrtugues.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/logo-pyrtugues.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="theme-color" content="#052e16">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -15,49 +29,153 @@
                             50: '#f0fdf4',
                             100: '#dcfce7',
                             200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
                             500: '#22c55e',
                             600: '#16a34a',
                             700: '#15803d',
+                            800: '#166534',
                             900: '#14532d',
                             950: '#052e16'
+                        },
+                        surface: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#090d16'
                         }
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 5s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3.5s ease-in-out infinite',
+                        'slide-down': 'slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+                            '50%': { opacity: '0.7', transform: 'scale(1.05)' },
+                        },
+                        slideDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-12px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
                         }
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- FontAwesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .font-mono { font-family: 'Fira Code', monospace; }
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.05); }
-        ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.6); }
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-        /* Animações de entrada suaves via Intersection Observer */
+    <style>
+        :root {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body { 
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .font-mono { 
+            font-family: 'Fira Code', monospace; 
+        }
+
+        /* Custom mobile-friendly scrollbars */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 9999px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(16, 185, 129, 0.5); }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.4);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .glass-card:hover {
+                transform: translateY(-3px);
+                border-color: rgba(34, 197, 94, 0.5);
+                box-shadow: 0 14px 30px -10px rgba(34, 197, 94, 0.2);
+            }
+        }
+
+        /* Smooth reveal animation */
         .reveal {
             opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: opacity, transform;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Touch interaction optimizations */
+        .btn-touch {
+            min-height: 44px;
+            min-width: 44px;
+            touch-action: manipulation;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            border-radius: 12px;
+            flex: 0 0 auto;
+        }
+
+        .editor-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .editor-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 0%, rgba(255,255,255,.08) 45%, transparent 70%);
+            transform: translateX(-120%);
+            transition: transform .6s ease;
+            pointer-events: none;
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+            .editor-link:hover::after { transform: translateX(120%); }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -70,153 +188,391 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 selection:bg-brand-500/30 selection:text-brand-300">
+<body class="bg-slate-50 dark:bg-surface-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300 selection:bg-brand-500/30 selection:text-brand-300 relative">
 
-    <header class="border-b border-slate-200/80 dark:border-slate-800/80 bg-white/75 dark:bg-slate-900/80 backdrop-blur-md sticky top-0 z-40 shadow-sm transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="flex items-center space-x-3 group cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                <div class="bg-gradient-to-br from-brand-500 to-emerald-700 text-white p-3 rounded-2xl shadow-lg shadow-brand-900/20 flex items-center justify-center transform group-hover:scale-105 transition duration-300">
-                    <i class="fa-solid fa-code text-xl"></i>
+    <header class="glass-panel sticky top-0 z-50 border-b transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <div class="flex items-center space-x-3 cursor-pointer group" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-surface-900 flex items-center justify-center shadow-lg shadow-brand-500/10 border border-slate-200/10 dark:border-slate-700/50 overflow-hidden transform group-hover:scale-105 transition duration-300">
+                    <img src="assets/logo-pyrtugues.png" alt="Logo Pyrtugues" class="brand-mark">
                 </div>
                 <div>
                     <div class="flex items-center space-x-2">
-                        <span class="font-extrabold text-xl tracking-wider text-slate-900 dark:text-white">PYRTUGUES</span>
-                        <span class="text-[10px] bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 font-bold px-2 py-0.5 rounded-full border border-brand-500/20 dark:border-brand-500/30">Open-Source</span>
+                        <span class="font-extrabold text-base sm:text-xl tracking-wider text-slate-900 dark:text-white">PYRTUGUES</span>
+                        <span class="text-[10px] bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 font-bold px-2 py-0.5 rounded-full border border-brand-500/20">v1.0</span>
                     </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Python em português, feito para aprender</p>
+                    <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">Python em português, feito para aprender</p>
                 </div>
             </div>
 
-            <!-- Nav Links & Actions -->
-            <div class="flex items-center space-x-3 sm:space-x-4">
-                <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600 dark:text-slate-300">
-                    <a href="#sobre" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200">O Projeto</a>
-                    <a href="#como-funciona" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200">Como Funciona</a>
-                    <a href="#criador" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200">Quem Criou</a>
-                    <a href="#doar" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors duration-200">Apoiar Projeto</a>
-                </nav>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-semibold text-slate-600 dark:text-slate-300">
+                <a href="#sobre" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">O Projeto</a>
+                <a href="#como-funciona" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Como Funciona</a>
+                <a href="#criador" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Quem Criou</a>
+                <a href="#doar" class="hover:text-brand-600 dark:hover:text-brand-400 transition-colors">Apoiar Projeto</a>
+            </nav>
 
-                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download class="px-4 py-2.5 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white text-xs sm:text-sm font-semibold rounded-xl shadow-lg shadow-brand-900/20 hover:shadow-brand-900/40 transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
-                    <i class="fa-solid fa-download"></i>
-                    <span>Baixar .exe</span>
+            <!-- Actions Header Button Group -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                
+                <!-- Editor Web -->
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="editor-link btn-touch px-3.5 sm:px-4 py-2 sm:py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brand-500" title="Abrir editor web do Pyrtugues">
+                    <i class="fa-solid fa-laptop-code"></i>
+                    <span class="hidden sm:inline">Abrir Editor</span>
                 </a>
 
-                <button onclick="toggleTheme()" class="p-2.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 border border-slate-200 dark:border-slate-700 shadow-sm transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-brand-500" title="Alternar Tema Claro/Escuro" aria-label="Alternar Tema">
-                    <i id="theme-icon" class="fa-solid fa-sun text-amber-500 dark:text-amber-400 transition-transform duration-300"></i>
+                <!-- Baixar Button (Desktop & Mobile header shortcut) -->
+                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download class="btn-touch px-3.5 sm:px-4 py-2 sm:py-2.5 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white text-xs sm:text-sm font-bold rounded-xl shadow-md shadow-brand-600/20 transition-all duration-200 flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="hidden sm:inline">Baixar .exe</span>
+                </a>
+
+                <!-- Theme Toggle Button -->
+                <button onclick="toggleTheme()" class="btn-touch p-2.5 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-surface-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 border border-slate-200 dark:border-slate-700/60 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500" title="Alternar Tema Claro/Escuro" aria-label="Alternar Tema">
+                    <i id="theme-icon" class="fa-solid fa-sun text-amber-500"></i>
                 </button>
+
+                <!-- Mobile Hamburger Button -->
+                <button onclick="toggleMobileMenu()" id="btn-mobile-menu" aria-expanded="false" aria-label="Abrir Menu" class="md:hidden btn-touch p-2.5 text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-surface-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-xl transition-all duration-200 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i id="icon-mobile-menu" class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation Drawer -->
+        <div id="mobile-drawer" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-surface-900/95 backdrop-blur-xl transition-all duration-300 shadow-2xl">
+            <div class="px-4 pt-3 pb-6 space-y-3">
+                <a href="#sobre" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-circle-info text-brand-500 w-5"></i>
+                    <span>O Projeto</span>
+                </a>
+                <a href="#como-funciona" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-laptop-code text-brand-500 w-5"></i>
+                    <span>Como Funciona</span>
+                </a>
+                <a href="#playground" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-play text-brand-500 w-5"></i>
+                    <span>Testar Código Interativo</span>
+                </a>
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-brand-500 w-5"></i>
+                    <span>Abrir Editor Web</span>
+                </a>
+                <a href="#criador" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-user-astronaut text-brand-500 w-5"></i>
+                    <span>Quem Criou</span>
+                </a>
+                <a href="#doar" onclick="toggleMobileMenu()" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-surface-800 font-semibold text-sm">
+                    <i class="fa-solid fa-heart text-amber-500 w-5"></i>
+                    <span>Apoiar Projeto</span>
+                </a>
+
+                <div class="pt-2 border-t border-slate-200 dark:border-slate-800 flex flex-col gap-2">
+                    <a href="https://github.com/alucard676968-coder/Pyrtugues" target="_blank" rel="noopener noreferrer" class="btn-touch w-full py-3 bg-slate-100 dark:bg-surface-800 text-slate-800 dark:text-white font-semibold rounded-xl text-center text-sm flex items-center justify-center space-x-2">
+                        <i class="fa-brands fa-github text-lg"></i>
+                        <span>Repositório GitHub</span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="relative overflow-hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-slate-200 dark:border-slate-800 bg-gradient-to-b from-white via-slate-50 to-slate-100 dark:from-slate-900 dark:via-slate-950 dark:to-slate-950">
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-brand-500/10 via-transparent to-transparent pointer-events-none"></div>
-        <div class="max-w-5xl mx-auto text-center space-y-8 relative z-10 reveal">
-            <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold shadow-sm animate-float">
-                <i class="fa-solid fa-sparkles"></i>
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-12 sm:py-20 lg:py-28 px-4 sm:px-6 lg:px-8 border-b border-slate-200/60 dark:border-slate-800/60">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[600px] h-[320px] sm:h-[600px] bg-brand-500/15 rounded-full blur-3xl pointer-events-none animate-pulse-glow"></div>
+
+        <div class="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8 relative z-10 reveal">
+            
+            <!-- Open Source Badge -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 text-xs font-semibold shadow-sm animate-float">
+                <i class="fa-solid fa-sparkles text-brand-500"></i>
                 <span>Ferramenta educacional open-source gratuita</span>
             </div>
             
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-                Aprenda a programar em <span class="bg-gradient-to-r from-brand-500 via-emerald-400 to-teal-400 bg-clip-text text-transparent">Português Nativo</span>
+            <!-- Main Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+                Aprenda a programar em <span class="bg-gradient-to-r from-brand-600 via-emerald-500 to-teal-400 bg-clip-text text-transparent">Português Nativo</span>
             </h1>
 
-            <p class="text-base sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-                Escreva código limpo usando sua língua materna e execute lógica real compatível com Python. Ideal para estudantes, crianças e iniciantes sem complicações.
+            <!-- Subtitle -->
+            <p class="text-sm sm:text-lg lg:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+                Escreva código em português, veja a tradução para Python em tempo real e continue no editor web para executar seus programas.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download class="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-bold rounded-2xl shadow-xl shadow-brand-900/30 hover:shadow-brand-900/50 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center justify-center space-x-3 text-base focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
-                    <i class="fa-brands fa-windows text-xl"></i>
-                    <span>Baixar Pyrtugues v1.0 (.exe)</span>
+            <!-- Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3.5 pt-2">
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="editor-link btn-touch w-full sm:w-auto px-7 py-3.5 sm:py-4 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-bold rounded-2xl shadow-xl shadow-brand-600/25 hover:shadow-brand-600/40 transition-all duration-300 flex items-center justify-center space-x-3 text-base focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i class="fa-solid fa-laptop-code text-xl"></i>
+                    <span>Abrir Editor Web</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
                 </a>
-                <a href="https://github.com/alucard676968-coder/Pyrtugues" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-6 py-4 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-800 dark:text-white font-semibold rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md hover:shadow-xl transform hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 flex items-center justify-center space-x-2 text-base focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-slate-900">
+                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download class="btn-touch w-full sm:w-auto px-6 py-3.5 sm:py-4 glass-card hover:bg-slate-100 dark:hover:bg-surface-800 text-slate-800 dark:text-white font-semibold rounded-2xl shadow-sm transition-all duration-300 flex items-center justify-center space-x-2.5 text-base focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i class="fa-brands fa-windows text-xl"></i>
+                    <span>Baixar versão desktop</span>
+                </a>
+                <a href="https://github.com/alucard676968-coder/Pyrtugues" target="_blank" rel="noopener noreferrer" class="btn-touch w-full sm:w-auto px-6 py-3.5 sm:py-4 bg-slate-100 dark:bg-surface-900 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-white font-semibold rounded-2xl shadow-sm transition-all duration-300 flex items-center justify-center space-x-2.5 text-base focus:outline-none focus:ring-2 focus:ring-brand-500">
                     <i class="fa-brands fa-github text-xl"></i>
-                    <span>Ver Código no GitHub</span>
+                    <span>GitHub</span>
                 </a>
             </div>
 
-            <!-- Code Preview Card -->
-            <div class="mt-14 text-left bg-slate-900/95 backdrop-blur-xl border border-slate-800 rounded-3xl shadow-2xl overflow-hidden max-w-3xl mx-auto transition-transform duration-500 hover:scale-[1.01]">
-                <div class="bg-slate-950 px-5 py-4 border-b border-slate-800 flex items-center justify-between">
-                    <div class="flex items-center space-x-2">
-                        <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block shadow-sm"></span>
-                        <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block shadow-sm"></span>
-                        <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block shadow-sm"></span>
-                    </div>
-                    <span class="text-xs font-mono text-slate-400">exemplo_sistema.pyrt</span>
-                    <span class="text-[10px] bg-brand-500/20 text-brand-400 font-mono px-2 py-0.5 rounded-full border border-brand-500/30">Pyrtugues Native</span>
-                </div>
-                <div class="p-6 sm:p-8 font-mono text-xs sm:text-sm text-slate-200 space-y-2.5 overflow-x-auto leading-relaxed">
-                    <div class="text-slate-500"># Programa simples em Pyrtugues</div>
-                    <div><span class="text-purple-400">função</span> <span class="text-amber-300">saudacao</span>(nome):</div>
-                    <div class="pl-6"><span class="text-brand-400">mostrar</span>(f<span class="text-emerald-300">"Olá, {nome}! Bem-vindo ao Pyrtugues."</span>)</div>
-                    <div class="pt-2 text-slate-500"># Executando a função</div>
-                    <div>aluno = <span class="text-brand-400">pergunte</span>(<span class="text-emerald-300">"Digite seu nome: "</span>)</div>
-                    <div>saudacao(aluno)</div>
-                </div>
+            <!-- Quick Specs Info Chips -->
+            <div class="pt-2 flex flex-wrap items-center justify-center gap-3 text-xs text-slate-500 dark:text-slate-400 font-medium">
+                <span class="flex items-center"><i class="fa-solid fa-bolt text-brand-500 mr-1.5"></i> Tradução em tempo real</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="flex items-center"><i class="fa-solid fa-arrow-up-right-from-square text-brand-500 mr-1.5"></i> Editor web conectado</span>
+                <span class="hidden sm:inline">•</span>
+                <span class="flex items-center"><i class="fa-brands fa-github text-brand-500 mr-1.5"></i> Código aberto</span>
             </div>
         </div>
     </section>
 
-    <section id="sobre" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div class="text-center space-y-4 mb-16 reveal">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Sobre a Ferramenta</h2>
-            <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Por que o Pyrtugues foi criado?</h3>
-            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">Aprender lógica de programação pela primeira vez pode ser intimidador devido à barreira do idioma inglês. O Pyrtugues resolve isso.</p>
+    <!-- Interactive Code Preview / Web Translator Section -->
+    <section id="playground" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="text-center space-y-3 mb-8 reveal">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Experimente Agora</h2>
+            <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Veja a Magia do Pyrtugues</h3>
+            <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
+                Escolha um exemplo abaixo ou digite seu próprio código em português para ver a conversão para Python em tempo real.
+            </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white dark:bg-slate-900/90 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-slate-200/50 dark:shadow-none hover:shadow-2xl hover:border-brand-500/30 dark:hover:border-brand-500/30 transform hover:-translate-y-1.5 transition-all duration-300 space-y-5 reveal">
-                <div class="w-14 h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-2xl font-bold border border-brand-500/20 shadow-sm">
+        <!-- Interactive IDE Window Card -->
+        <div class="glass-panel rounded-3xl shadow-2xl border border-slate-200/80 dark:border-slate-800 overflow-hidden reveal">
+            
+            <!-- Window Titlebar with Sample Tabs -->
+            <div class="bg-slate-900 px-4 sm:px-6 py-3.5 border-b border-slate-800 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center space-x-2">
+                    <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block shadow-sm"></span>
+                    <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block shadow-sm"></span>
+                    <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block shadow-sm"></span>
+                    <span class="ml-2 text-xs font-mono text-slate-400 hidden xs:inline">editor_pyrtugues.pyrt</span>
+                </div>
+
+                <!-- Example Presets Switcher -->
+                <div class="flex items-center space-x-1 sm:space-x-2 overflow-x-auto py-1 max-w-full">
+                    <button onclick="carregarExemplo('saudacao')" id="tab-saudacao" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-brand-500/20 text-brand-300 border border-brand-500/30 transition-all shrink-0">
+                        💬 Saudação
+                    </button>
+                    <button onclick="carregarExemplo('calculadora')" id="tab-calculadora" class="px-2.5 py-1 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all shrink-0">
+                        🧮 Calculadora
+                    </button>
+                    <button onclick="carregarExemplo('tabuada')" id="tab-tabuada" class="px-2.5 py-1 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all shrink-0">
+                        🔢 Tabuada
+                    </button>
+                </div>
+            </div>
+
+            <!-- Two-Column Code & Translation Grid (Responsive) -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-800 bg-slate-950">
+                
+                <!-- Pyrtugues Editor Input Area -->
+                <div class="p-4 sm:p-6 space-y-3">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <span class="flex items-center"><i class="fa-solid fa-file-code text-brand-400 mr-1.5"></i> Código em Pyrtugues (Português)</span>
+                        <div class="flex items-center gap-3">
+                            <button onclick="copiarCodigoPyrt()" class="hover:text-white transition flex items-center space-x-1.5" title="Copiar Pyrtugues">
+                                <i id="copy-pyrt-icon" class="fa-regular fa-copy"></i>
+                                <span id="copy-pyrt-text">Copiar</span>
+                            </button>
+                            <button onclick="copiarPythonGerado()" class="hover:text-white transition flex items-center space-x-1.5" title="Copiar Python gerado">
+                                <i id="copy-python-icon" class="fa-brands fa-python"></i>
+                                <span id="copy-python-text">Copiar Python</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <textarea id="pyrt-input" oninput="traduzirCodigoEmTempoReal()" class="w-full h-48 sm:h-56 bg-slate-900/80 text-emerald-300 font-mono text-xs sm:text-sm p-4 rounded-xl border border-slate-800 focus:outline-none focus:border-brand-500/50 resize-none leading-relaxed" placeholder="Escreva seu código em português aqui..." spellcheck="false">mostrar("=== SISTEMA PYRTUGUES ===")
+nome = pergunte("Qual é o seu nome? ")
+idade = inteiro(pergunte("Sua idade: "))
+
+se idade maior ou igual a 12:
+    mostrar(f"Olá, {nome}! Você já pode programar sistemas incríveis.")
+senão:
+    mostrar(f"Oi, {nome}! O futuro da tecnologia é seu!")</textarea>
+                </div>
+
+                <!-- Python Output Preview Area -->
+                <div class="p-4 sm:p-6 space-y-3 bg-slate-950/60">
+                    <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+                        <span class="flex items-center"><i class="fa-brands fa-python text-sky-400 mr-1.5"></i> Código Python Equivalente (Gerado)</span>
+                        <span class="text-[10px] bg-sky-500/10 text-sky-400 px-2 py-0.5 rounded border border-sky-500/20 font-sans">Tradução Direta</span>
+                    </div>
+
+                    <pre id="python-output" class="w-full h-48 sm:h-56 bg-slate-900/40 text-slate-300 font-mono text-xs sm:text-sm p-4 rounded-xl border border-slate-800/80 overflow-auto leading-relaxed whitespace-pre-wrap">print("=== SISTEMA PYRTUGUES ===")
+nome = input("Qual é o seu nome? ")
+idade = int(input("Sua idade: "))
+
+if idade >= 12:
+    print(f"Olá, {nome}! Você já pode programar sistemas incríveis.")
+else:
+    print(f"Oi, {nome}! O futuro da tecnologia é seu!")</pre>
+                </div>
+            </div>
+
+            <!-- Bottom Console Status Ribbon -->
+            <div class="bg-slate-900 px-4 sm:px-6 py-2.5 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs text-slate-400">
+                <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-2 animate-pulse"></span> Demonstração de tradução ativa</span>
+                <span class="font-mono text-[11px] text-slate-500">Ex.: se → if, mostrar → print, pergunte → input</span>
+            </div>
+
+            <div class="p-4 sm:p-5 bg-gradient-to-r from-brand-500/10 via-emerald-500/5 to-transparent border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="text-center sm:text-left">
+                    <p class="text-sm font-bold text-slate-900 dark:text-white">Quer executar o código de verdade?</p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Abra o editor web do Pyrtugues para escrever, executar e testar seu programa.</p>
+                </div>
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-touch editor-link inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white text-sm font-bold shadow-lg shadow-brand-600/20 focus:outline-none focus:ring-2 focus:ring-brand-500 whitespace-nowrap">
+                    <i class="fa-solid fa-play"></i>
+                    <span>Ir para o Editor</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Features Section -->
+    <section id="sobre" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-slate-200/60 dark:border-slate-800/60">
+        <div class="text-center space-y-3 mb-12 sm:mb-16 reveal">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Sobre o Projeto</h2>
+            <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Por que o Pyrtugues foi criado?</h3>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed">
+                Aprender lógica de programação pela primeira vez não deve ser um desafio de idioma. O Pyrtugues elimina a barreira do inglês na fase inicial.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            
+            <!-- Feature 1 -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 reveal">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold border border-brand-500/20 shadow-sm">
                     <i class="fa-solid fa-language"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Português Nativo</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Comandos como <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-slate-800 px-1.5 py-0.5 rounded">se</code>, <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-slate-800 px-1.5 py-0.5 rounded">senão</code>, <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-slate-800 px-1.5 py-0.5 rounded">mostrar</code> e <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-slate-800 px-1.5 py-0.5 rounded">pergunte</code> tornam o aprendizado intuitivo.
+                <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Português Nativo</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Comandos como <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-surface-800 px-1.5 py-0.5 rounded">se</code>, <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-surface-800 px-1.5 py-0.5 rounded">senão</code>, <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-surface-800 px-1.5 py-0.5 rounded">mostrar</code> e <code class="text-brand-600 dark:text-brand-400 font-mono bg-brand-50 dark:bg-surface-800 px-1.5 py-0.5 rounded">pergunte</code> deixam a escrita mais próxima da linguagem cotidiana.
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-slate-900/90 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-slate-200/50 dark:shadow-none hover:shadow-2xl hover:border-brand-500/30 dark:hover:border-brand-500/30 transform hover:-translate-y-1.5 transition-all duration-300 space-y-5 reveal">
-                <div class="w-14 h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-2xl font-bold border border-brand-500/20 shadow-sm">
+            <!-- Feature 2 -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 reveal">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold border border-brand-500/20 shadow-sm">
                     <i class="fa-solid fa-bridge"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Ponte para o Python</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Mantém rigorosamente a mesma estrutura sintática e lógica do Python tradicional, facilitando a transição futura para o mercado profissional.
+                <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Ponte para o Python</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    A proposta mantém a lógica do Python e facilita a comparação entre o código em português e a sintaxe Python correspondente.
                 </p>
             </div>
 
-            <div class="bg-white dark:bg-slate-900/90 p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xl shadow-slate-200/50 dark:shadow-none hover:shadow-2xl hover:border-brand-500/30 dark:hover:border-brand-500/30 transform hover:-translate-y-1.5 transition-all duration-300 space-y-5 reveal">
-                <div class="w-14 h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-2xl font-bold border border-brand-500/20 shadow-sm">
+            <!-- Feature 3 -->
+            <div class="glass-card p-6 sm:p-8 rounded-3xl space-y-4 reveal">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-2xl flex items-center justify-center text-xl sm:text-2xl font-bold border border-brand-500/20 shadow-sm">
                     <i class="fa-solid fa-school"></i>
                 </div>
-                <h4 class="text-xl font-bold text-slate-900 dark:text-white">Foco na Educação</h4>
-                <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Perfeito para escolas, projetos sociais e auto-estudo por jovens que querem dar os primeiros passos na tecnologia.
+                <h4 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Foco na Educação</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Projetado especialmente para escolas, oficinas de tecnologia, crianças e jovens que querem dar seus primeiros passos no universo do desenvolvimento.
                 </p>
             </div>
         </div>
     </section>
 
-    <section id="criador" class="py-24 px-4 sm:px-6 lg:px-8 bg-slate-100/70 dark:bg-slate-900/40 border-y border-slate-200 dark:border-slate-800">
-        <div class="max-w-4xl mx-auto bg-white dark:bg-slate-900 p-8 sm:p-12 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center reveal">
-            <div class="md:col-span-4 flex flex-col items-center text-center">
-                <div class="w-32 h-32 bg-gradient-to-br from-brand-500 to-emerald-700 text-white rounded-full flex items-center justify-center text-5xl shadow-xl shadow-brand-900/20 mb-4 transform hover:scale-105 transition duration-300">
-                    <i class="fa-solid fa-user-astronaut"></i>
-                </div>
-                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Vinicius Caracciolo</h3>
-                <span class="text-xs bg-brand-500/10 text-brand-600 dark:text-brand-400 font-semibold px-3 py-1 rounded-full mt-2 border border-brand-500/20">Criador & Desenvolvedor (12 anos)</span>
+    <!-- How it Works Breakdown Section -->
+    <section id="como-funciona" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto bg-slate-100/50 dark:bg-surface-900/30 rounded-3xl my-8 border border-slate-200/60 dark:border-slate-800/60">
+        <div class="text-center space-y-3 mb-12 reveal">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">Fluxo de Trabalho</h2>
+            <h3 class="text-2xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Como o Pyrtugues Executa seu Código?</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            
+            <!-- Step 1 -->
+            <div class="glass-card p-6 rounded-2xl space-y-3 relative reveal">
+                <span class="text-3xl font-extrabold text-brand-500/30 dark:text-brand-400/20">01</span>
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">1. Você Escreve em Português</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Digite suas ideias no editor usando palavras do seu dia a dia, como <code class="text-brand-600 dark:text-brand-400">para cada</code>, <code class="text-brand-600 dark:text-brand-400">enquanto</code> ou <code class="text-brand-600 dark:text-brand-400">função</code>.
+                </p>
             </div>
 
-            <div class="md:col-span-8 space-y-4">
-                <h4 class="text-2xl font-bold text-slate-900 dark:text-white">Feito por um estudante, para estudantes</h4>
-                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+            <!-- Step 2 -->
+            <div class="glass-card p-6 rounded-2xl space-y-3 relative reveal">
+                <span class="text-3xl font-extrabold text-brand-500/30 dark:text-brand-400/20">02</span>
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">2. Mapeamento Inteligente</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    O motor Pyrtugues converte expressões mantendo a integridade de textos (strings f-string) e estruturas de controle intactas.
+                </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="glass-card p-6 rounded-2xl space-y-3 relative reveal">
+                <span class="text-3xl font-extrabold text-brand-500/30 dark:text-brand-400/20">03</span>
+                <h4 class="text-base font-bold text-slate-900 dark:text-white">3. Execução Nativa no Terminal</h4>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Depois da tradução, você pode continuar no <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-brand-600 dark:text-brand-400 font-semibold hover:underline">Editor Web</a> para executar e testar o programa.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Direct Editor Section -->
+    <section class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-xl reveal relative overflow-hidden">
+            <div class="absolute -top-16 -right-16 w-40 h-40 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+                <div class="text-center md:text-left">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-600 dark:text-brand-400 text-[11px] font-bold uppercase tracking-wider">
+                        <i class="fa-solid fa-link"></i> Conectado ao ecossistema
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-3">Editor Web do Pyrtugues</h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-2 max-w-xl leading-relaxed">
+                        Esta página apresenta o projeto. O editor separado é onde você escreve, traduz e executa seus programas.
+                    </p>
+                </div>
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-touch editor-link shrink-0 px-6 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-500 text-white font-bold shadow-lg shadow-brand-600/20 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <i class="fa-solid fa-code"></i>
+                    Abrir editor
+                    <i class="fa-solid fa-arrow-up-right-from-square text-xs opacity-80"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creator Section -->
+    <section id="criador" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="glass-panel p-6 sm:p-12 rounded-3xl shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center reveal">
+            
+            <!-- Creator Avatar Column -->
+            <div class="md:col-span-4 flex flex-col items-center text-center">
+                <div class="relative">
+                    <div class="w-28 h-28 sm:w-36 sm:h-36 bg-gradient-to-br from-brand-600 via-emerald-600 to-teal-700 text-white rounded-full flex items-center justify-center text-4xl sm:text-5xl shadow-2xl shadow-brand-600/30 mb-4 transform hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-user-astronaut"></i>
+                    </div>
+                    <span class="absolute bottom-4 right-1 bg-amber-400 text-slate-950 p-2 rounded-full text-xs shadow-lg" title="Criador Talentoso">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                </div>
+                <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Vinicius Caracciolo</h3>
+                <span class="text-xs bg-brand-500/10 text-brand-600 dark:text-brand-400 font-bold px-3 py-1 rounded-full mt-2 border border-brand-500/20">Criador & Desenvolvedor (12 anos)</span>
+            </div>
+
+            <!-- Creator Bio Details -->
+            <div class="md:col-span-8 space-y-4 text-center md:text-left">
+                <h4 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Feito por um estudante, para estudantes</h4>
+                
+                <p class="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                     O Pyrtugues foi idealizado por Vinicius com apenas 12 anos de idade, unindo curiosidade e paixão por tecnologia para ajudar outros estudantes a aprenderem lógica de programação sem barreiras.
                 </p>
-                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                    O projeto conta com o apoio técnico do ChatGPT para estruturação de documentação e refinamento de interface, mantendo toda a essência criativa e autoral do autor original.
+                
+                <p class="text-xs sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                    O projeto conta com o suporte técnico de Inteligência Artificial para estruturação de documentação e refinamento de interface gráfica, mantendo toda a essência autoral e criativa do autor original.
                 </p>
-                <div class="pt-3 flex flex-wrap items-center gap-4 text-xs text-slate-500 font-mono">
+
+                <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-3 text-xs text-slate-500 font-mono">
                     <span class="flex items-center"><i class="fa-solid fa-check text-brand-500 mr-1.5"></i> 100% Open-Source</span>
                     <span>•</span>
                     <span class="flex items-center"><i class="fa-solid fa-check text-brand-500 mr-1.5"></i> Código Aberto</span>
@@ -225,76 +581,78 @@
         </div>
     </section>
 
-    <section id="download" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div class="bg-gradient-to-br from-brand-900 via-emerald-950 to-slate-950 text-white p-8 sm:p-14 rounded-3xl shadow-2xl border border-brand-500/30 text-center space-y-8 relative overflow-hidden reveal">
-            <div class="absolute -right-12 -bottom-12 opacity-10 text-9xl pointer-events-none">
+    <!-- Download Banner Section -->
+    <section id="download" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div class="bg-gradient-to-br from-surface-900 via-brand-950 to-surface-950 text-white p-8 sm:p-14 rounded-3xl shadow-2xl border border-brand-500/30 text-center space-y-6 sm:space-y-8 relative overflow-hidden reveal">
+            <div class="absolute -right-12 -bottom-12 opacity-10 text-9xl pointer-events-none hidden xs:block">
                 <i class="fa-solid fa-download"></i>
             </div>
 
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-xs font-semibold shadow-sm">
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/30 text-brand-300 text-xs font-semibold shadow-sm">
                 <i class="fa-solid fa-circle-down"></i>
-                <span>Versão para Computador</span>
+                <span>Aplicativo para Windows</span>
             </div>
 
-            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight">Baixe o Pyrtugues .exe</h2>
+            <h2 class="text-2xl sm:text-5xl font-extrabold tracking-tight">Baixe o Pyrtugues .exe</h2>
             
-            <p class="text-base sm:text-lg text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
-                Instale o aplicativo executável diretamente no seu Windows para praticar programação offline, criar scripts em português e testar comandos no terminal integrado.
+            <p class="text-xs sm:text-lg text-slate-300 max-w-xl mx-auto font-normal leading-relaxed">
+                Instale o aplicativo executável diretamente no seu computador para praticar programação offline, criar scripts em português e testar comandos no terminal integrado.
             </p>
 
-            <div class="flex flex-wrap items-center justify-center gap-4 pt-4">
-                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download class="px-9 py-4 bg-brand-500 hover:bg-brand-400 active:bg-brand-600 text-slate-950 font-bold rounded-2xl shadow-xl shadow-brand-500/30 hover:shadow-brand-500/50 transform hover:-translate-y-1 active:translate-y-0 transition-all duration-300 flex items-center space-x-3 text-base focus:outline-none focus:ring-2 focus:ring-white">
+            <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+                <a href="https://github.com/alucard676968-coder/Pyrtugues/releases/download/v1.0.0/Pyrtugues_Setup.exe" download onclick="mostrarModalDownload()" class="btn-touch w-full sm:w-auto px-8 py-4 bg-brand-500 hover:bg-brand-400 active:bg-brand-600 text-slate-950 font-extrabold rounded-2xl shadow-xl shadow-brand-500/30 transition-all duration-300 flex items-center justify-center space-x-3 text-base focus:outline-none focus:ring-2 focus:ring-white">
                     <i class="fa-solid fa-cloud-arrow-down text-xl"></i>
                     <span>Baixar Pyrtugues_Setup.exe (v1.0)</span>
                 </a>
             </div>
 
-            <p class="text-xs text-slate-400 pt-2">
-                Compatível com Windows 10 e 11 (64-bit). Download gratuito.
-            </p>
-            <p class="text-[10px] text-slate-500 max-w-2xl mx-auto break-all">
-                SHA-256: <span class="font-mono">0b2dbc9bf456a65128e880adbba0b61d30f8f1471475f00ba60a4a9528cd1541</span>
+            <p class="text-[11px] sm:text-xs text-slate-400 pt-1">
+                Compatível com Windows 10 e 11 (64-bit). Totalmente gratuito e seguro.
             </p>
         </div>
     </section>
 
-    <section id="doar" class="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        <div class="bg-white dark:bg-slate-900 p-8 sm:p-14 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-2xl space-y-8 text-center reveal">
-            <div class="space-y-4 max-w-xl mx-auto">
-                <div class="w-14 h-14 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20 shadow-sm">
+    <!-- Support / Donation Section -->
+    <section id="doar" class="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+        <div class="glass-panel p-6 sm:p-12 rounded-3xl shadow-2xl space-y-8 text-center reveal">
+            
+            <div class="space-y-3 max-w-xl mx-auto">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center text-2xl mx-auto border border-amber-500/20 shadow-sm">
                     <i class="fa-solid fa-mug-hot"></i>
                 </div>
                 <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">Apoie o Projeto Pyrtugues</h3>
-                <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Gostou da iniciativa do Vinicius? Considere fazer uma doação para apoiar novas atualizações, melhorias e manutenção desta ferramenta educacional gratuita.
+                <p class="text-xs sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Gostou da iniciativa do Vinicius? Considere fazer uma doação Pix para apoiar novas atualizações e manter esta ferramenta educacional gratuita.
                 </p>
             </div>
 
-            <!-- Quick Donation buttons -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
-                <button onclick="abrirModalDoacao('R$ 10 - Cafezinho ☕')" class="p-5 bg-slate-50 dark:bg-slate-950 hover:bg-brand-50 dark:hover:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500/40 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex flex-col items-center space-y-2 group shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-                    <span class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400">R$ 10</span>
+            <!-- Value presets -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5 max-w-2xl mx-auto">
+                <button onclick="abrirModalDoacao('R$ 10 - Cafezinho ☕')" class="btn-touch p-4 glass-card hover:bg-brand-50/50 dark:hover:bg-surface-800 rounded-2xl transition-all duration-200 flex flex-col items-center justify-center space-y-1 group shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <span class="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400">R$ 10</span>
                     <span class="text-xs text-slate-500">Cafezinho ☕</span>
                 </button>
-                <button onclick="abrirModalDoacao('R$ 25 - Incentivo 🚀')" class="p-5 bg-brand-50/70 dark:bg-slate-950 hover:bg-brand-100/70 dark:hover:bg-slate-800 rounded-2xl border border-brand-500/40 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex flex-col items-center space-y-2 group shadow-md focus:outline-none focus:ring-2 focus:ring-brand-500">
-                    <span class="text-xl font-extrabold text-brand-600 dark:text-brand-400">R$ 25</span>
-                    <span class="text-xs text-slate-500">Incentivo 🚀</span>
+                <button onclick="abrirModalDoacao('R$ 25 - Incentivo 🚀')" class="btn-touch p-4 bg-brand-500/10 hover:bg-brand-500/20 border-brand-500/40 rounded-2xl transition-all duration-200 flex flex-col items-center justify-center space-y-1 group shadow-md focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <span class="text-lg font-extrabold text-brand-600 dark:text-brand-400">R$ 25</span>
+                    <span class="text-xs text-slate-500 font-semibold">Incentivo 🚀</span>
                 </button>
-                <button onclick="abrirModalDoacao('R$ 50 - Patrocínio ⭐')" class="p-5 bg-slate-50 dark:bg-slate-950 hover:bg-brand-50 dark:hover:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500/40 transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 flex flex-col items-center space-y-2 group shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
-                    <span class="text-xl font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400">R$ 50</span>
+                <button onclick="abrirModalDoacao('R$ 50 - Patrocínio ⭐')" class="btn-touch p-4 glass-card hover:bg-brand-50/50 dark:hover:bg-surface-800 rounded-2xl transition-all duration-200 flex flex-col items-center justify-center space-y-1 group shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <span class="text-lg font-extrabold text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400">R$ 50</span>
                     <span class="text-xs text-slate-500">Patrocínio ⭐</span>
                 </button>
             </div>
 
-            <!-- Pix Key Card -->
-            <div class="max-w-xl mx-auto bg-slate-50 dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 text-left shadow-inner">
+            <!-- Copyable Pix Key Box -->
+            <div class="max-w-xl mx-auto bg-slate-100 dark:bg-surface-950 p-4 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 text-left shadow-inner">
                 <div class="flex items-center justify-between">
                     <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Chave Pix (Copie e Cole)</span>
                     <span class="text-[10px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 px-2 py-0.5 rounded-full font-mono font-semibold">Instantâneo</span>
                 </div>
-                <div class="flex items-center justify-between gap-3 bg-white dark:bg-slate-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
-                    <code id="pix-key-text" class="font-mono text-xs sm:text-sm text-brand-600 dark:text-brand-400 font-bold select-all break-all">16500e54-8260-47c2-a4b2-fd53838359e0</code>
-                    <button onclick="copiarChavePix()" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-semibold rounded-xl text-xs transition-all duration-200 shadow-md flex items-center space-x-1.5 shrink-0 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white dark:bg-surface-900 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800">
+                    <code id="pix-key-text" class="font-mono text-xs sm:text-sm text-brand-600 dark:text-brand-400 font-bold select-all break-all self-center">16500e54-8260-47c2-a4b2-fd53838359e0</code>
+                    
+                    <button onclick="copiarChavePix()" class="btn-touch px-4 py-2.5 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-semibold rounded-xl text-xs transition-all shadow-md flex items-center justify-center space-x-1.5 shrink-0 focus:outline-none focus:ring-2 focus:ring-brand-500">
                         <i id="copy-icon" class="fa-solid fa-copy"></i>
                         <span id="copy-text">Copiar</span>
                     </button>
@@ -303,42 +661,336 @@
         </div>
     </section>
 
-    <footer class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-10 px-4 text-center text-xs text-slate-500 space-y-2 mt-auto">
-        <p class="font-medium">PYRTUGUES • Criado por Vinicius Caracciolo com ajuda do ChatGPT. Todos os direitos reservados.</p>
-        <p>Ferramenta educacional open-source voltada para o aprendizado de programação em português.</p>
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white dark:bg-surface-950 py-8 sm:py-10 px-4 text-center text-xs text-slate-500 space-y-2.5 mt-auto">
+        <div class="max-w-7xl mx-auto flex flex-col items-center space-y-3">
+            <div class="flex items-center space-x-2">
+                <span class="font-bold text-slate-700 dark:text-slate-300">PYRTUGUES</span>
+                <span>•</span>
+                <span>Criado por Vinicius Caracciolo</span>
+            </div>
+            <p class="max-w-md text-slate-500 dark:text-slate-400 leading-relaxed">
+                Ferramenta educacional open-source voltada para o aprendizado de programação em português.
+            </p>
+            <div class="pt-2 flex items-center justify-center gap-5">
+                <a href="https://github.com/alucard676968-coder/Pyrtugues" target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition" aria-label="GitHub do Pyrtugues">
+                    <i class="fa-brands fa-github text-base"></i>
+                </a>
+                <a href="https://pyrtugues-editor.netlify.app/" target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition" aria-label="Abrir Editor Web do Pyrtugues">
+                    <i class="fa-solid fa-laptop-code text-base"></i>
+                </a>
+            </div>
+        </div>
     </footer>
 
-    <!-- Modal de Doação -->
-    <div id="modal-doacao" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
-        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-8 text-center space-y-5 shadow-2xl transform scale-95 transition-transform duration-300">
-            <div class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center text-2xl mx-auto border border-amber-500/20 shadow-sm">
-                <i class="fa-solid fa-heart"></i>
+    <!-- Download Notification Modal -->
+    <div id="modal-download" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="glass-panel rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-5 shadow-2xl animate-slide-down">
+            <div class="w-14 h-14 bg-brand-500/10 text-brand-600 dark:text-brand-400 rounded-full flex items-center justify-center text-2xl mx-auto border border-brand-500/20 shadow-sm">
+                <i class="fa-solid fa-circle-check"></i>
             </div>
-            <h3 class="text-xl font-bold text-slate-900 dark:text-white" id="titulo-valor-doacao">Muito Obrigado!</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                Sua contribuição ajuda muito o Vinicius a continuar melhorando o Pyrtugues e mantendo o projeto gratuito para todos os estudantes.
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Download Iniciado!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                O arquivo <code class="font-mono text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-surface-800 px-1.5 py-0.5 rounded">Pyrtugues_Setup.exe</code> está sendo baixado. Divirta-se programando!
             </p>
-            <div class="bg-slate-50 dark:bg-slate-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-400 space-y-1">
-                <span>Chave Pix:</span>
-                <div class="text-brand-600 dark:text-brand-400 font-bold select-all break-all">16500e54-8260-47c2-a4b2-fd53838359e0</div>
-            </div>
-            <button onclick="fecharModal('modal-doacao')" class="w-full py-3.5 bg-brand-600 hover:bg-brand-500 active:bg-brand-700 text-white font-semibold rounded-2xl text-sm transition-all shadow-lg shadow-brand-900/20 focus:outline-none focus:ring-2 focus:ring-brand-500">Concluir</button>
+            <button onclick="fecharModal('modal-download')" class="btn-touch w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl text-sm transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-500">Entendido</button>
         </div>
     </div>
 
+    <!-- Donation Modal -->
+    <div id="modal-doacao" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 transition-all duration-300">
+        <div class="glass-panel rounded-3xl max-w-md w-full p-6 sm:p-8 text-center space-y-5 shadow-2xl animate-slide-down">
+            <div class="w-14 h-14 bg-amber-500/10 text-amber-500 rounded-full flex items-center justify-center text-2xl mx-auto border border-amber-500/20 shadow-sm">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 dark:text-white" id="titulo-valor-doacao">Muito Obrigado!</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                Sua contribuição ajuda muito o Vinicius a continuar melhorando o Pyrtugues e mantendo o projeto gratuito para estudantes.
+            </p>
+            <div class="bg-slate-100 dark:bg-surface-950 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-500 space-y-1">
+                <span>Chave Pix:</span>
+                <div class="text-brand-600 dark:text-brand-400 font-bold select-all break-all">16500e54-8260-47c2-a4b2-fd53838359e0</div>
+            </div>
+            <button onclick="fecharModal('modal-doacao')" class="btn-touch w-full py-3.5 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-2xl text-sm transition-all shadow-lg focus:outline-none focus:ring-2 focus:ring-brand-500">Concluir</button>
+        </div>
+    </div>
+
+    <!-- Application Logic Script -->
     <script>
-        function toggleTheme() {
-            const html = document.documentElement;
-            const icon = document.getElementById('theme-icon');
-            if (html.classList.contains('dark')) {
-                html.classList.remove('dark');
-                icon.className = 'fa-solid fa-moon text-slate-700';
-                localStorage.setItem('pyrt_site_theme', 'light');
-            } else {
-                html.classList.add('dark');
-                icon.className = 'fa-solid fa-sun text-amber-400';
-                localStorage.setItem('pyrt_site_theme', 'dark');
+        // --- 1. EXEMPLOS DE CÓDIGO ---
+        const EXEMPLOS = {
+            saudacao: `mostrar("=== SISTEMA PYRTUGUES ===")
+nome = pergunte("Qual é o seu nome? ")
+idade = inteiro(pergunte("Sua idade: "))
+
+se idade maior ou igual a 12:
+    mostrar(f"Olá, {nome}! Você já pode programar sistemas incríveis.")
+senão:
+    mostrar(f"Oi, {nome}! O futuro da tecnologia é seu!")`,
+
+            calculadora: `n1 = decimal(pergunte("Primeiro número: "))
+op = pergunte("Operação (+, -, *, /): ")
+n2 = decimal(pergunte("Segundo número: "))
+
+se op == "+":
+    mostrar(f"Resultado: {n1 + n2}")
+senão se op == "-":
+    mostrar(f"Resultado: {n1 - n2}")
+senão se op == "*":
+    mostrar(f"Resultado: {n1 * n2}")
+senão:
+    mostrar(f"Resultado: {n1 / n2}")`,
+
+            tabuada: `numero = inteiro(pergunte("Ver tabuada de qual número? "))
+mostrar(f"--- TABUADA DO {numero} ---")
+
+para i em intervalo(1, 11):
+    mostrar(f"{numero} x {i} = {numero * i}")`
+        };
+
+        // --- 2. TRADUTOR CLIENT-SIDE PYRTUGUES -> PYTHON ---
+        const DICIONARIO_PYRT = [
+            ["senão se", "elif"], ["senãose", "elif"], ["senão", "else"],
+            ["enquanto verdadeiro", "while True"], ["enquanto", "while"],
+            ["para cada", "for"], ["para", "for"], ["se", "if"], ["em", "in"],
+            ["função", "def"], ["classe", "class"], ["retornar", "return"],
+            ["produzir", "yield"], ["assíncrono", "async"], ["aguardar", "await"],
+            ["importar", "import"], ["de", "from"], ["tentar", "try"],
+            ["excepto", "except"], ["finalmente", "finally"], ["levantar", "raise"],
+            ["afirmar", "assert"], ["global", "global"], ["nãolocal", "nonlocal"],
+            ["verdadeiro", "True"], ["falso", "False"], ["nulo", "None"],
+            ["vazio", "pass"], ["nada", "None"], ["não é", "is not"], ["é", "is"],
+            ["maior ou igual a", ">="], ["menor ou igual a", "<="],
+            ["maior ou igual", ">="], ["menor ou igual", "<="],
+            ["maior que", ">"], ["menor que", "<"], ["diferente de", "!="],
+            ["igual a", "=="], ["fora de", "not in"], ["dentro de", "in"],
+            ["inteiro", "int"], ["decimal", "float"], ["texto", "str"],
+            ["booleano", "bool"], ["lista", "list"], ["dicionário", "dict"],
+            ["tupla", "tuple"], ["conjunto", "set"], ["mostrar", "print"],
+            ["imprimir", "print"], ["pergunte", "input"], ["pergunta", "input"],
+            ["intervalo", "range"], ["tamanho", "len"], ["comprimento", "len"],
+            ["tipo", "type"], ["somar", "sum"], ["máximo", "max"], ["mínimo", "min"],
+            ["arredondar", "round"], ["absoluto", "abs"], ["potência", "**"],
+            ["elevado a", "**"], ["resto", "%"]
+        ].sort((a, b) => b[0].length - a[0].length);
+
+        function escapeRegExp(value) {
+            return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        }
+
+        function traduzirExpressaoPyrtugues(expressao) {
+            let resultado = expressao;
+            for (const [br, py] of DICIONARIO_PYRT) {
+                const regex = new RegExp(`(?<![A-Za-zÀ-ÿ0-9_])${escapeRegExp(br)}(?![A-Za-zÀ-ÿ0-9_])`, 'gi');
+                resultado = resultado.replace(regex, py);
             }
+            resultado = resultado.replace(/(\S)\s+e\s+(?![=])/gi, '$1 and ');
+            resultado = resultado.replace(/(\S)\s+ou\s+(?![=])/gi, '$1 or ');
+            resultado = resultado.replace(/(?<![A-Za-zÀ-ÿ0-9_])não\s+(?=[A-Za-zÀ-ÿ_(\[])/gi, 'not ');
+
+            // Operadores por extenso somente quando aparecem entre dois termos.
+            resultado = resultado.replace(/(?<=\S)\s+mais\s+(?=\S)/gi, ' + ');
+            resultado = resultado.replace(/(?<=\S)\s+menos\s+(?=\S)/gi, ' - ');
+            resultado = resultado.replace(/(?<=\S)\s+vezes\s+(?=\S)/gi, ' * ');
+            resultado = resultado.replace(/(?<=\S)\s+dividido\s+por\s+(?=\S)/gi, ' / ');
+            resultado = resultado.replace(/(?<=\S)\s+resto\s+(?=\S)/gi, ' % ');
+            resultado = resultado.replace(/(?<=\S)\s+(?:potência|elevado\s+a)\s+(?=\S)/gi, ' ** ');
+            return resultado;
+        }
+
+        function traduzirFString(match) {
+            const prefixMatch = match.match(/^([rubf]{1,3})/i);
+            const prefixo = prefixMatch ? prefixMatch[1] : '';
+            if (!/f/i.test(prefixo)) return match;
+
+            const inicio = prefixo.length;
+            const quote = match[inicio] === '"' ? '"' : "'";
+            const triple = match.startsWith(prefixo + quote.repeat(3));
+            const abertura = quote.repeat(triple ? 3 : 1);
+            const fechamento = abertura;
+            const conteudo = match.slice(inicio + abertura.length, match.length - fechamento.length);
+            let out = '';
+
+            for (let i = 0; i < conteudo.length; i++) {
+                if (conteudo[i] === '{') {
+                    let nivel = 1;
+                    let j = i + 1;
+                    for (; j < conteudo.length && nivel > 0; j++) {
+                        if (conteudo[j] === '{') nivel++;
+                        else if (conteudo[j] === '}') nivel--;
+                    }
+                    if (nivel === 0) {
+                        const expr = conteudo.slice(i + 1, j - 1);
+                        out += '{' + traduzirExpressaoPyrtugues(expr) + '}';
+                        i = j - 1;
+                        continue;
+                    }
+                }
+                out += conteudo[i];
+            }
+            return prefixo + abertura + out + fechamento;
+        }
+
+        function protegerCodigo(codigo) {
+            const protegidos = [];
+            function guardar(valor) {
+                protegidos.push(valor);
+                return `__PYRT_PROT_${protegidos.length - 1}__`;
+            }
+
+            // Um único scanner protege strings/f-strings e comentários sem criar placeholders dentro de placeholders.
+            const padrao = /(?:([rRuUbBfF]*[fF][rRuUbBfF]*)(\x22\x22\x22[\s\S]*?\x22\x22\x22|\x27\x27\x27[\s\S]*?\x27\x27\x27|\x22(?:\\.|[^\x22\\\n])*\x22|\x27(?:\\.|[^\x27\\\n])*\x27))|(?:#[^\n]*)|(?:\x22\x22\x22[\s\S]*?\x22\x22\x22|\x27\x27\x27[\s\S]*?\x27\x27\x27|\x22(?:\\.|[^\x22\\\n])*\x22|\x27(?:\\.|[^\x27\\\n])*\x27)/g;
+            const protegido = codigo.replace(padrao, (match) =>
+                match.startsWith('#') ? guardar(match) : guardar(traduzirFString(match))
+            );
+            return { protegido, protegidos };
+        }
+
+        function traduzirPyrtuguesParaPython(codigo) {
+            const { protegido, protegidos } = protegerCodigo(codigo);
+            let resultado = traduzirExpressaoPyrtugues(protegido);
+            for (let i = 0; i < protegidos.length; i++) {
+                resultado = resultado.replace(`__PYRT_PROT_${i}__`, protegidos[i]);
+            }
+            return resultado;
+        }
+
+        function escapeHtml(texto) {
+            return texto.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function highlightPython(codigo) {
+            const tokenRegex = /(#.*)|(\x22\x22\x22[\s\S]*?\x22\x22\x22|\x27\x27\x27[\s\S]*?\x27\x27\x27|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')|(\b(?:def|class|if|elif|else|while|for|in|return|yield|import|from|try|except|finally|pass|break|continue|and|or|not|is|async|await|with|as|raise|assert|global|nonlocal)\b)|(\b(?:True|False|None)\b)|(\b\d+(?:\.\d+)?\b)/g;
+            let ultimo = 0;
+            let html = '';
+            let match;
+            while ((match = tokenRegex.exec(codigo)) !== null) {
+                html += escapeHtml(codigo.slice(ultimo, match.index));
+                const token = escapeHtml(match[0]);
+                if (match[1]) html += `<span class="text-slate-500 italic">${token}</span>`;
+                else if (match[2]) html += `<span class="text-emerald-300">${token}</span>`;
+                else if (match[3]) html += `<span class="text-sky-300 font-bold">${token}</span>`;
+                else if (match[4]) html += `<span class="text-amber-300 font-semibold">${token}</span>`;
+                else html += `<span class="text-orange-300">${token}</span>`;
+                ultimo = tokenRegex.lastIndex;
+            }
+            html += escapeHtml(codigo.slice(ultimo));
+            return html;
+        }
+
+        function traduzirCodigoEmTempoReal() {
+            const input = document.getElementById('pyrt-input').value;
+            const output = document.getElementById('python-output');
+            const texto = traduzirPyrtuguesParaPython(input);
+            output.innerHTML = texto.trim()
+                ? highlightPython(texto)
+                : '<span class="text-slate-600 italic">A tradução aparecerá aqui...</span>';
+        }
+
+        function carregarExemplo(chave) {
+            if (!EXEMPLOS[chave]) return;
+            document.getElementById('pyrt-input').value = EXEMPLOS[chave];
+            traduzirCodigoEmTempoReal();
+            ['saudacao', 'calculadora', 'tabuada'].forEach(tab => {
+                const btn = document.getElementById(`tab-${tab}`);
+                if (!btn) return;
+                const ativo = tab === chave;
+                btn.className = ativo
+                    ? 'px-2.5 py-1 rounded-lg text-xs font-medium bg-brand-500/20 text-brand-300 border border-brand-500/30 transition-all shrink-0'
+                    : 'px-2.5 py-1 rounded-lg text-xs font-medium text-slate-400 hover:text-white transition-all shrink-0';
+                btn.setAttribute('aria-pressed', ativo ? 'true' : 'false');
+            });
+        }
+
+        // --- 3. MENU MOBILE & TEMAS ---
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const icon = document.getElementById('icon-mobile-menu');
+            const button = document.getElementById('btn-mobile-menu');
+            const abrir = drawer.classList.contains('hidden');
+            drawer.classList.toggle('hidden', !abrir);
+            icon.className = abrir ? 'fa-solid fa-xmark text-lg' : 'fa-solid fa-bars text-lg';
+            button.setAttribute('aria-expanded', abrir ? 'true' : 'false');
+        }
+
+        function atualizarIconeTema() {
+            const icon = document.getElementById('theme-icon');
+            if (!icon) return;
+            const escuro = document.documentElement.classList.contains('dark');
+            icon.className = escuro ? 'fa-solid fa-sun text-amber-400' : 'fa-solid fa-moon text-slate-700';
+        }
+
+        function toggleTheme() {
+            const escuro = document.documentElement.classList.toggle('dark');
+            atualizarIconeTema();
+            try { localStorage.setItem('pyrt_theme', escuro ? 'dark' : 'light'); } catch (e) {}
+        }
+
+        // --- 4. COPIAR E MODAIS ---
+        async function executarCopia(texto) {
+            if (!texto) return false;
+            if (navigator.clipboard && window.isSecureContext) {
+                try { await navigator.clipboard.writeText(texto); return true; } catch (e) {}
+            }
+            try {
+                const aux = document.createElement('textarea');
+                aux.value = texto;
+                aux.style.position = 'fixed';
+                aux.style.opacity = '0';
+                document.body.appendChild(aux);
+                aux.focus();
+                aux.select();
+                const ok = document.execCommand('copy');
+                aux.remove();
+                return ok;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        async function copiarChavePix() {
+            const chave = document.getElementById('pix-key-text')?.innerText || '';
+            const copyIcon = document.getElementById('copy-icon');
+            const copyText = document.getElementById('copy-text');
+            const sucesso = await executarCopia(chave);
+            if (sucesso) {
+                copyIcon.className = 'fa-solid fa-check';
+                copyText.innerText = 'Copiado!';
+                setTimeout(() => { copyIcon.className = 'fa-solid fa-copy'; copyText.innerText = 'Copiar'; }, 2500);
+            } else {
+                copyText.innerText = 'Falhou';
+                setTimeout(() => copyText.innerText = 'Copiar', 2000);
+            }
+        }
+
+        async function copiarCodigoPyrt() {
+            const codigo = document.getElementById('pyrt-input').value;
+            const copyIcon = document.getElementById('copy-pyrt-icon');
+            const copyText = document.getElementById('copy-pyrt-text');
+            const sucesso = await executarCopia(codigo);
+            if (sucesso) {
+                copyIcon.className = 'fa-solid fa-check text-brand-400';
+                copyText.innerText = 'Copiado!';
+                setTimeout(() => { copyIcon.className = 'fa-regular fa-copy'; copyText.innerText = 'Copiar'; }, 2500);
+            }
+        }
+
+        async function copiarPythonGerado() {
+            const codigo = traduzirPyrtuguesParaPython(document.getElementById('pyrt-input').value);
+            const copyIcon = document.getElementById('copy-python-icon');
+            const copyText = document.getElementById('copy-python-text');
+            const sucesso = await executarCopia(codigo);
+            if (sucesso) {
+                copyIcon.className = 'fa-solid fa-check text-emerald-400';
+                copyText.innerText = 'Copiado!';
+                setTimeout(() => { copyIcon.className = 'fa-brands fa-python'; copyText.innerText = 'Copiar Python'; }, 2500);
+            }
+        }
+
+        function mostrarModalDownload() {
+            const modal = document.getElementById('modal-download');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
         }
 
         function abrirModalDoacao(valor) {
@@ -350,62 +1002,47 @@
 
         function fecharModal(id) {
             const modal = document.getElementById(id);
+            if (!modal) return;
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
 
-        function copiarChavePix() {
-            const chave = "16500e54-8260-47c2-a4b2-fd53838359e0";
-            const copyIcon = document.getElementById('copy-icon');
-            const copyText = document.getElementById('copy-text');
+        document.addEventListener('keydown', (event) => {
+            if (event.key !== 'Escape') return;
+            ['modal-download', 'modal-doacao'].forEach(id => {
+                const modal = document.getElementById(id);
+                if (modal && !modal.classList.contains('hidden')) fecharModal(id);
+            });
+            const drawer = document.getElementById('mobile-drawer');
+            if (drawer && !drawer.classList.contains('hidden')) toggleMobileMenu();
+        });
 
-            // Fallback robusto para cópia de texto seguro em Iframe
-            const aux = document.createElement("input");
-            aux.setAttribute("value", chave);
-            document.body.appendChild(aux);
-            aux.select();
-            document.execCommand('copy');
-            document.body.removeChild(aux);
-
-            copyIcon.className = "fa-solid fa-check";
-            copyText.innerText = "Copiado!";
-            
-            setTimeout(() => {
-                copyIcon.className = "fa-solid fa-copy";
-                copyText.innerText = "Copiar";
-            }, 2500);
-        }
-
-        // Intersection Observer para animações de entrada elegantes
-        document.addEventListener("DOMContentLoaded", function() {
+        // --- 5. INICIALIZAÇÃO ---
+        document.addEventListener('DOMContentLoaded', () => {
             try {
-                const savedTheme = localStorage.getItem('pyrt_site_theme');
-                const icon = document.getElementById('theme-icon');
-                if (savedTheme === 'light') {
-                    document.documentElement.classList.remove('dark');
-                    if (icon) icon.className = 'fa-solid fa-moon text-slate-700';
-                }
-            } catch(e){}
+                const savedTheme = localStorage.getItem('pyrt_theme');
+                if (savedTheme === 'light') document.documentElement.classList.remove('dark');
+            } catch (e) {}
+            atualizarIconeTema();
+            traduzirCodigoEmTempoReal();
 
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px 0px -50px 0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+            const observer = 'IntersectionObserver' in window
+                ? new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 })
+                : null;
 
             document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
+                if (observer) observer.observe(el);
+                else el.classList.add('active');
             });
         });
     </script>
+
 </body>
 </html>
