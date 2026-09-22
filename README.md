@@ -1,19 +1,21 @@
 <div align="center">
 
-<img src="./assets/logo-pyrtugues.png" alt="Logo do Pyrtugues" width="180">
+<img src="./assets/logo-pyrtugues.png" alt="Logo do Pyrtugues" width="160">
 
 # Pyrtugues
 
 ### Python em português, feito para aprender programação.
 
-**Uma ferramenta educacional para quem quer começar a programar usando uma sintaxe em português, mantendo a lógica do Python como base.**
+**Programação em português • lógica de Python • aprendizado progressivo**
 
-[![Versão](https://img.shields.io/badge/vers%C3%A3o-1.2.0-00bfa5?style=for-the-badge)](https://github.com/pyrtugues/Pyrtugues/releases)
-[![Python](https://img.shields.io/badge/base-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-[![Web](https://img.shields.io/badge/Editor-Web-111827?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pyrtugues-editor.netlify.app/)
+Uma ferramenta educacional criada para facilitar o primeiro contato com programação, usando uma sintaxe em português e mantendo a lógica do Python como base.
+
+[🌐 **Site oficial**](https://pyrtugues.netlify.app/) · [🧪 **Editor Web**](https://pyrtugues-editor.netlify.app/) · [📦 **Downloads**](https://github.com/pyrtugues/Pyrtugues/releases/latest) · [▶️ **YouTube**](https://www.youtube.com/@pyrtugues)
+
+[![Versão](https://img.shields.io/badge/vers%C3%A3o-1.2.0-10B981?style=for-the-badge)](https://github.com/pyrtugues/Pyrtugues/releases)
+[![Base](https://img.shields.io/badge/base-Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Editor](https://img.shields.io/badge/editor-Web-111827?style=for-the-badge&logo=googlechrome&logoColor=white)](https://pyrtugues-editor.netlify.app/)
 [![GitHub](https://img.shields.io/badge/GitHub-Pyrtugues-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pyrtugues/Pyrtugues)
-
-### 🌐 [Site oficial](https://pyrtugues.netlify.app/) · 🧪 [Editor Web](https://pyrtugues-editor.netlify.app/) · 📦 [Downloads](https://github.com/pyrtugues/Pyrtugues/releases/latest)
 
 </div>
 
@@ -21,25 +23,59 @@
 
 ## 📚 O que é o Pyrtugues?
 
-**Pyrtugues** é um projeto educacional de programação em português criado para facilitar o primeiro contato com a lógica de programação e com o Python.
+**Pyrtugues** é um projeto educacional de programação em português criado para facilitar o primeiro contato com **lógica de programação e Python**.
 
-A proposta é simples: em vez de começar imediatamente com vários comandos em inglês, o estudante pode escrever estruturas familiares em português e aprender os mesmos conceitos fundamentais de programação.
+A ideia é reduzir a barreira inicial causada pelos comandos em inglês sem trocar programação textual por blocos. O estudante aprende variáveis, condições, repetições, funções e expressões usando uma sintaxe em português e, ao mesmo tempo, consegue enxergar a relação com o Python tradicional.
 
-O Pyrtugues trabalha como uma **ponte para o Python**. O código escrito em Pyrtugues é processado por um motor de tradução que o converte para a sintaxe correspondente em Python antes da execução.
+O Pyrtugues funciona como uma **ponte para o Python**: o código em Pyrtugues é processado por um motor de tradução para uma sintaxe correspondente em Python antes da execução.
 
-A ideia não é substituir o Python. A ideia é **facilitar a entrada no mundo da programação e, depois, ajudar o estudante a fazer a conexão entre a sintaxe em português e o Python tradicional**.
-
-> **Pyrtugues = programação em português + lógica do Python + aprendizado progressivo.**
+> **Programar em português → entender a lógica → enxergar o Python → aprender Python.**
 
 ---
 
-## ✨ Por que o Pyrtugues existe?
+## 🚀 Comece agora
 
-Para muitas pessoas que estão começando a programar, uma das primeiras dificuldades é entender ao mesmo tempo **lógica, sintaxe, comandos e termos em inglês**.
+### 🧪 Teste no navegador
 
-O Pyrtugues tenta reduzir essa barreira inicial sem transformar programação em um sistema de blocos. A estrutura continua próxima da programação textual e da lógica usada em Python.
+**[Abrir o Editor Web do Pyrtugues](https://pyrtugues-editor.netlify.app/)**
 
-Com isso, o estudante pode começar com algo mais natural em português, entender variáveis, condições, repetições, funções e expressões, e posteriormente reconhecer esses mesmos conceitos em Python.
+Você pode experimentar o Pyrtugues diretamente no navegador usando a versão Web do projeto.
+
+### 🖥️ Baixe para Windows
+
+**[Baixar a versão mais recente](https://github.com/pyrtugues/Pyrtugues/releases/latest)**
+
+A versão Desktop reúne editor e execução em uma aplicação gráfica para Windows.
+
+### 🌐 Conheça o projeto
+
+**[Visitar o site oficial](https://pyrtugues.netlify.app/)**
+
+---
+
+## 💡 Pyrtugues → Python
+
+A proposta pode ser entendida com um exemplo simples.
+
+### Pyrtugues
+
+```pyrtugues
+idade = 12
+
+se idade maior que 10:
+    mostrar("Olá! Você pode programar!")
+```
+
+### Python equivalente
+
+```python
+idade = 12
+
+if idade > 10:
+    print("Olá! Você pode programar!")
+```
+
+A sintaxe muda, mas a lógica de programação continua reconhecível.
 
 ---
 
@@ -67,64 +103,31 @@ Com isso, o estudante pode começar com algo mais natural em português, entende
 └──────────────┬──────────────┘
                │
                ▼
-          EXECUÇÃO
+           EXECUÇÃO
 ```
 
-### Exemplo básico
-
-**Pyrtugues:**
-
-```pyrtugues
-idade = 12
-
-se idade maior que 10:
-    mostrar("Olá! Você pode programar!")
-```
-
-**Python equivalente:**
-
-```python
-idade = 12
-
-if idade > 10:
-    print("Olá! Você pode programar!")
-```
-
-Esse formato ajuda o estudante a perceber que a sintaxe muda, mas o raciocínio de programação continua reconhecível.
+Na versão Web, a arquitetura usa **Pyrtugues → tradutor → Python → Pyodide → execução no navegador**.
 
 ---
 
-## 🚀 Recursos
+## ✨ Recursos
 
-### 🟢 Sintaxe em português
-
-Comandos comuns podem ser escritos em português, tornando o primeiro contato com programação mais acessível para falantes de português.
-
-### 🐍 Baseada na lógica do Python
-
-O projeto procura manter uma estrutura próxima da lógica e da organização do Python, funcionando como uma ponte para a linguagem tradicional.
-
-### 🖥️ Aplicação desktop
-
-O Pyrtugues possui uma versão para computador com interface gráfica, editor de código, execução do programa e recursos voltados para estudo.
-
-### 🌐 Editor Web
-
-Existe também uma versão que roda no navegador, permitindo experimentar o Pyrtugues sem depender da instalação da versão desktop.
-
-### 📖 Exemplos para aprender
-
-O projeto inclui exemplos e experiências práticas para ajudar quem está começando com variáveis, condições, repetições, funções e operações.
-
-### ⌨️ Experiência de editor
-
-A versão desktop conta com recursos de edição voltados para facilitar o uso do código, incluindo numeração de linhas e atalhos de edição.
+| Recurso | Descrição |
+|---|---|
+| 🇧🇷 **Sintaxe em português** | Estruturas e comandos em português para o primeiro contato com programação |
+| 🐍 **Base Python** | Conceitos e organização próximos da lógica do Python |
+| 🔄 **Pyrtugues → Python** | Permite visualizar a relação entre as duas sintaxes |
+| 🖥️ **Desktop** | Aplicação gráfica para Windows |
+| 🌐 **Editor Web** | Experiência de programação diretamente no navegador |
+| 📚 **Exemplos** | Programas para estudar e experimentar |
+| ⌨️ **Editor de código** | Recursos de edição voltados para escrever e testar programas |
+| 🧪 **Projeto em evolução** | Novas correções, recursos e exemplos podem chegar em versões futuras |
 
 ---
 
-## 🔤 Alguns comandos e equivalências
+## 🔤 Pyrtugues ↔ Python
 
-O vocabulário do Pyrtugues continua em desenvolvimento. Alguns exemplos de mapeamento incluem:
+O vocabulário do projeto continua em desenvolvimento. Alguns exemplos de correspondência são:
 
 | Pyrtugues | Python |
 |---|---|
@@ -144,25 +147,29 @@ O vocabulário do Pyrtugues continua em desenvolvimento. Alguns exemplos de mape
 | `inteiro()` | `int()` |
 | `decimal()` | `float()` |
 | `texto()` | `str()` |
+| `lista()` | `list()` |
+| `dicionário()` | `dict()` |
+| `tupla()` | `tuple()` |
+| `conjunto()` | `set()` |
 | `intervalo()` | `range()` |
 | `tamanho()` | `len()` |
 | `verdadeiro` | `True` |
 | `falso` | `False` |
 | `nulo` | `None` |
 
-> O conjunto de comandos suportados pode mudar conforme o desenvolvimento do projeto. Consulte o código e os exemplos da versão atual para saber o que está disponível.
+> O conjunto de comandos e a compatibilidade podem mudar conforme o desenvolvimento. Consulte o código e os exemplos da versão utilizada.
 
 ---
 
 ## 🧪 Exemplos práticos
 
-### Olá, mundo
+### 👋 Olá, mundo
 
 ```pyrtugues
 mostrar("Olá, mundo!")
 ```
 
-### Variáveis
+### 📦 Variáveis
 
 ```pyrtugues
 nome = "Vinicius"
@@ -171,7 +178,7 @@ idade = 12
 mostrar(f"Meu nome é {nome} e tenho {idade} anos.")
 ```
 
-### Condição
+### 🔀 Condição
 
 ```pyrtugues
 idade = 12
@@ -182,14 +189,14 @@ senão:
     mostrar("Continue estudando!")
 ```
 
-### Repetição
+### 🔁 Repetição
 
 ```pyrtugues
 para numero em intervalo(1, 6):
     mostrar(numero)
 ```
 
-### Função
+### 🧩 Função
 
 ```pyrtugues
 função saudacao(nome):
@@ -198,23 +205,34 @@ função saudacao(nome):
 mostrar(saudacao("Pyrtugues"))
 ```
 
-> Os exemplos acima representam a proposta sintática do projeto. A compatibilidade exata de cada recurso pode variar conforme a versão do motor de tradução.
+### 🧮 Calculadora
+
+```pyrtugues
+n1 = decimal(pergunte("Primeiro número: "))
+op = pergunte("Operação (+, -, *, /): ")
+n2 = decimal(pergunte("Segundo número: "))
+
+se op == "+":
+    mostrar(n1 + n2)
+senão se op == "-":
+    mostrar(n1 - n2)
+senão se op == "*":
+    mostrar(n1 * n2)
+senão:
+    mostrar(n1 / n2)
+```
+
+> Os exemplos mostram a proposta sintática. A compatibilidade exata de cada recurso depende da versão atual do motor de tradução.
 
 ---
 
 ## 🖥️ Versão Desktop
 
-A versão desktop é voltada para uso em computadores Windows e reúne a experiência de edição e execução do Pyrtugues em uma interface gráfica.
+A versão Desktop foi desenvolvida com **Python + CustomTkinter** e reúne a edição e execução do Pyrtugues em uma interface gráfica.
 
-### Baixar
+**[📦 Baixar a versão mais recente](https://github.com/pyrtugues/Pyrtugues/releases/latest)**
 
-➡️ **[Abrir a página de Releases](https://github.com/pyrtugues/Pyrtugues/releases/latest)**
-
-O GitHub permite manter um link permanente para a versão mais recente usando `/releases/latest`. Isso evita precisar trocar o link toda vez que uma nova versão é publicada.
-
-### Código principal
-
-O repositório inclui o código Python da aplicação, atualmente organizado principalmente no arquivo:
+O código principal da aplicação está no arquivo:
 
 ```text
 Pyrtugues_code.py
@@ -224,29 +242,35 @@ Pyrtugues_code.py
 
 ## 🌐 Editor Web — Pyrtugues Online
 
-O projeto também possui um editor web para experimentar a linguagem diretamente no navegador:
+O projeto possui um editor para experimentar **programação em português baseada em Python** diretamente no navegador.
 
-### 👉 [Abrir o Editor Web do Pyrtugues](https://pyrtugues-editor.netlify.app/)
+**👉 https://pyrtugues-editor.netlify.app/**
 
-A versão web utiliza tecnologias de navegador e **Pyodide** para executar Python no ambiente do browser.
+A versão Web utiliza tecnologias de navegador e **Pyodide** para executar Python no ambiente do browser.
 
-A proposta da versão online é tornar o teste do Pyrtugues rápido e acessível, sem transformar o navegador em uma versão completamente diferente da linguagem.
+Entre os recursos disponíveis na versão Web estão:
+
+- editor de código;
+- tradução Pyrtugues → Python;
+- execução no navegador;
+- entrada interativa;
+- exemplos;
+- saída no terminal;
+- visualização/cópia do Python gerado;
+- download do código Python;
+- execução do motor em Web Worker.
 
 ---
 
-## 🏠 Site oficial
+## 🌐 Site oficial
 
-Conheça a página institucional do projeto:
+O site reúne a apresentação do projeto, informações sobre o Pyrtugues e links para as versões disponíveis.
 
-### 👉 [https://pyrtugues.netlify.app/](https://pyrtugues.netlify.app/)
-
-No site você pode encontrar informações sobre o projeto, acesso ao editor web, downloads e outros materiais relacionados ao Pyrtugues.
+**👉 https://pyrtugues.netlify.app/**
 
 ---
 
-## 📦 Estrutura do repositório
-
-A estrutura pode evoluir com o projeto, mas atualmente inclui as principais partes abaixo:
+## 📂 Estrutura do repositório
 
 ```text
 Pyrtugues/
@@ -259,15 +283,13 @@ Pyrtugues/
 └── ...
 ```
 
-### O que cada parte representa?
-
 | Arquivo / pasta | Função |
 |---|---|
 | `assets/` | Recursos visuais do projeto |
 | `LICENSE` | Termos de uso e distribuição |
-| `README.md` | Documentação principal do repositório |
-| `Pyrtugues_code.py` | Código da versão desktop |
-| `index.html` | Parte web do projeto |
+| `README.md` | Documentação principal |
+| `Pyrtugues_code.py` | Código principal da versão Desktop |
+| `index.html` | Parte Web do projeto |
 
 ---
 
@@ -275,9 +297,9 @@ Pyrtugues/
 
 ### Desktop
 
-- **Python** — linguagem utilizada no núcleo da aplicação
-- **CustomTkinter** — interface gráfica
-- **Tkinter** — recursos de interface e edição
+- **Python**
+- **CustomTkinter**
+- **Tkinter**
 
 ### Web
 
@@ -285,75 +307,103 @@ Pyrtugues/
 - **CSS**
 - **JavaScript**
 - **Tailwind CSS**
-- **Pyodide** — ambiente para Python no navegador
-- **Web Worker** — execução separada no ambiente web
+- **Pyodide**
+- **Web Worker**
 
 ---
 
 ## 🚀 Começando pelo código-fonte
 
-Para clonar o repositório:
+Clone o repositório:
 
 ```bash
 git clone https://github.com/pyrtugues/Pyrtugues.git
 ```
 
-Depois:
+Entre na pasta:
 
 ```bash
 cd Pyrtugues
 ```
 
-A partir daí, consulte os arquivos e exemplos da versão atual para executar a parte do projeto que você deseja estudar.
+Depois, consulte os arquivos da parte Desktop ou Web que deseja estudar. O procedimento de execução pode variar conforme a parte do projeto utilizada.
 
-> Como o Pyrtugues possui componentes desktop e web, o procedimento de execução pode variar conforme a parte do repositório que você está utilizando.
+---
+
+## ❓ Perguntas frequentes
+
+### O Pyrtugues é Python?
+
+Não. O Pyrtugues é uma proposta de sintaxe em português baseada na lógica do Python, com um motor de tradução para Python.
+
+### O Pyrtugues substitui o Python?
+
+Não. O objetivo é funcionar como uma **ponte para o aprendizado de Python**.
+
+### Preciso saber inglês para começar?
+
+A proposta do Pyrtugues é reduzir a barreira inicial dos comandos em inglês para quem está começando.
+
+### Onde posso testar?
+
+No **[Editor Web do Pyrtugues](https://pyrtugues-editor.netlify.app/)**.
+
+### O Pyrtugues está pronto?
+
+O projeto está em desenvolvimento e pode receber novos recursos, correções e mudanças de compatibilidade.
 
 ---
 
 ## 🔎 Pyrtugues na internet
 
-O projeto mantém a mesma identidade e nome em seus principais canais:
+Para facilitar a identificação do projeto, os canais oficiais usam o mesmo nome e identidade:
 
 | Canal | Endereço |
 |---|---|
-| 🌐 Site oficial | [pyrtugues.netlify.app](https://pyrtugues.netlify.app/) |
+| 🌐 Site | [pyrtugues.netlify.app](https://pyrtugues.netlify.app/) |
 | 🧪 Editor Web | [pyrtugues-editor.netlify.app](https://pyrtugues-editor.netlify.app/) |
 | 💻 GitHub | [github.com/pyrtugues/Pyrtugues](https://github.com/pyrtugues/Pyrtugues) |
 | 👤 Perfil | [github.com/pyrtugues](https://github.com/pyrtugues) |
-| 📦 Releases | [github.com/pyrtugues/Pyrtugues/releases/latest](https://github.com/pyrtugues/Pyrtugues/releases/latest) |
+| 📦 Releases | [Versão mais recente](https://github.com/pyrtugues/Pyrtugues/releases/latest) |
+| ▶️ YouTube | [@pyrtugues](https://www.youtube.com/@pyrtugues) |
 
-Se você encontrou o projeto por uma pesquisa como **“Pyrtugues”**, **“Pyrtugues programação”**, **“programação em português baseada em Python”** ou **“Python em português”**, este é o repositório principal do projeto.
+O projeto pode aparecer em pesquisas relacionadas a **Pyrtugues**, **programação em português**, **Python em português**, **programação baseada em Python** e **editor de Python em português**. A posição de cada página depende da indexação de cada buscador.
 
 ---
 
-## 📌 Estado do projeto
+## 🌱 Estado do projeto
 
-**Versão atual do repositório: 1.2.0**
+**Versão atual: 1.2.0**
 
-O Pyrtugues continua em desenvolvimento. Novos comandos, correções, exemplos, melhorias de tradução, interface, documentação e ferramentas educacionais podem aparecer nas próximas versões.
+O Pyrtugues continua em desenvolvimento. Entre as áreas que podem evoluir estão:
 
-O objetivo é evoluir sem perder a proposta central: **facilitar o aprendizado de programação em português e criar uma ponte clara para o Python.**
+- novos comandos;
+- melhorias no tradutor;
+- tratamento de erros;
+- novos exemplos e exercícios;
+- documentação;
+- experiência do editor;
+- materiais educacionais;
+- novas plataformas.
 
 ---
 
 ## 🤝 Contribuições
 
-O projeto pode receber contribuições através do GitHub, especialmente em áreas como:
+Sugestões, testes e contribuições podem ajudar o projeto a evoluir.
 
-- testes de exemplos;
-- identificação e documentação de bugs;
-- sugestões de comandos;
-- melhorias na documentação;
-- exemplos educacionais;
-- melhorias no código.
+Você pode contribuir com:
 
-Ao trabalhar no tradutor, é importante testar cuidadosamente alterações que possam afetar nomes de variáveis, strings, comentários, f-strings, expressões e código já suportado.
+- 🧪 testes;
+- 🐛 identificação de bugs;
+- 💡 sugestões de comandos;
+- 📖 documentação;
+- 🧩 exemplos educacionais;
+- 💻 código.
 
-### Issues
+Ao modificar o tradutor, é importante testar alterações que possam afetar nomes de variáveis, strings, comentários, f-strings, expressões e código já suportado.
 
-Encontrou um problema? Abra uma issue no GitHub:
-
-👉 [Issues do Pyrtugues](https://github.com/pyrtugues/Pyrtugues/issues)
+**👉 [Abrir uma Issue](https://github.com/pyrtugues/Pyrtugues/issues)**
 
 ---
 
@@ -361,11 +411,9 @@ Encontrou um problema? Abra uma issue no GitHub:
 
 O Pyrtugues **não utiliza a licença MIT atualmente**.
 
-O projeto possui uma licença própria. Ela estabelece permissões para uso pessoal e educacional individual e define regras específicas para uso institucional, comercial, redistribuição e modificações.
+O projeto possui uma **licença própria**, com regras específicas para uso pessoal, educacional individual, institucional, comercial, redistribuição e modificações.
 
-Antes de copiar, distribuir, modificar ou utilizar o Pyrtugues em qualquer contexto diferente do permitido, leia o arquivo:
-
-👉 **[`LICENSE`](./LICENSE)**
+Antes de copiar, modificar, distribuir ou utilizar o Pyrtugues, consulte o arquivo **[`LICENSE`](./LICENSE)**.
 
 A publicação do código no GitHub não deve ser interpretada como autorização para usos que a licença não permita.
 
@@ -375,51 +423,30 @@ A publicação do código no GitHub não deve ser interpretada como autorizaçã
 
 **Vinicius Caracciolo**
 
-O Pyrtugues nasceu como um projeto pessoal de programação e educação, com a ideia de tornar o primeiro contato com código mais acessível para falantes de português.
+O Pyrtugues nasceu como um projeto pessoal voltado para **programação e educação**, com a ideia de tornar o primeiro contato com código mais acessível para falantes de português.
 
-O projeto começou quando seu criador tinha **12 anos** e foi crescendo para incluir uma aplicação desktop, uma versão web, documentação, exemplos e uma identidade própria.
-
-### Projeto pessoal → projeto público
-
-A intenção do Pyrtugues é continuar evoluindo como um projeto independente, documentado publicamente e conectado a uma comunidade de pessoas interessadas em programação e educação.
+O projeto começou quando seu criador tinha **12 anos** e evoluiu para incluir uma aplicação Desktop, uma versão Web, documentação, exemplos e uma identidade própria.
 
 ---
 
 ## ⭐ Como apoiar o Pyrtugues
 
-Você pode ajudar o projeto de formas simples:
+Você pode ajudar de formas simples:
 
 - ⭐ dar uma estrela no GitHub;
-- 🧪 testar o editor web;
+- 🧪 testar o editor Web;
 - 🐛 reportar bugs;
 - 💡 sugerir melhorias;
 - 📖 ajudar com documentação e exemplos;
-- 🔗 compartilhar o projeto com quem está aprendendo programação.
+- 🔗 compartilhar o projeto.
 
-👉 **[Dar uma estrela no GitHub](https://github.com/pyrtugues/Pyrtugues)**
-
----
-
-## 🗺️ Próximos passos
-
-Algumas áreas que podem evoluir no futuro incluem:
-
-- mais comandos e recursos do Python;
-- melhorias no tradutor;
-- tratamento de erros mais amigável;
-- novos exemplos e exercícios;
-- documentação mais completa;
-- melhorias na experiência do editor;
-- materiais para aprendizagem;
-- novas plataformas e versões.
-
-Esses planos podem mudar conforme o desenvolvimento do projeto.
+**👉 [Dar uma estrela no GitHub](https://github.com/pyrtugues/Pyrtugues)**
 
 ---
-
-## 💚 Pyrtugues
 
 <div align="center">
+
+# 💚 Pyrtugues
 
 ### Programação em português.
 ### Lógica de Python.
@@ -427,6 +454,6 @@ Esses planos podem mudar conforme o desenvolvimento do projeto.
 
 **Pyrtugues — Python em português, feito para aprender programação.**
 
-[🌐 Site](https://pyrtugues.netlify.app/) · [🧪 Editor Web](https://pyrtugues-editor.netlify.app/) · [💻 GitHub](https://github.com/pyrtugues/Pyrtugues) · [📦 Releases](https://github.com/pyrtugues/Pyrtugues/releases/latest)
+[🌐 Site](https://pyrtugues.netlify.app/) · [🧪 Editor Web](https://pyrtugues-editor.netlify.app/) · [💻 GitHub](https://github.com/pyrtugues/Pyrtugues) · [📦 Releases](https://github.com/pyrtugues/Pyrtugues/releases/latest) · [▶️ YouTube](https://www.youtube.com/@pyrtugues)
 
 </div>
