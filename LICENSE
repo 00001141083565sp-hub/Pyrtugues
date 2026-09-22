@@ -1,21 +1,157 @@
-MIT License
-
+PYRTUGUES PERSONAL & INDIVIDUAL EDUCATIONAL LICENSE
 Copyright (c) 2026 Vinicius Caracciolo
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. DEFINIÇÕES
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+"Software" significa o projeto Pyrtugues, incluindo seu código-fonte,
+executáveis, arquivos, documentação e demais materiais distribuídos
+pelo autor como parte do projeto.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+"Uso Pessoal" significa o uso do Software por uma pessoa para suas
+próprias atividades, estudos, testes, aprendizado e projetos pessoais.
+
+"Uso Educacional Individual" significa o uso do Software por uma
+pessoa, individualmente, para aprender, estudar ou praticar
+programação, sem adoção ou utilização institucional.
+
+"Uso Institucional" significa qualquer uso realizado por uma escola,
+universidade, curso, empresa, organização, instituição, laboratório,
+projeto institucional ou outra entidade, inclusive quando o Software
+for utilizado oficialmente em aulas, atividades, treinamentos ou
+ambientes de trabalho.
+
+"Uso Comercial" significa qualquer uso realizado com finalidade de
+obter receita, vender produtos ou serviços, oferecer serviços pagos,
+integrar o Software a produtos comerciais ou utilizá-lo como parte de
+uma atividade comercial.
+
+2. PERMISSÃO PARA USO PESSOAL E EDUCACIONAL INDIVIDUAL
+
+É concedida gratuitamente permissão para:
+
+a) utilizar o Software para Uso Pessoal;
+
+b) utilizar o Software para Uso Educacional Individual;
+
+c) estudar o código-fonte do Software;
+
+d) fazer cópias do Software para Uso Pessoal ou Uso Educacional
+   Individual;
+
+e) compartilhar uma cópia do Software com outra pessoa, desde que
+   essa pessoa utilize o Software exclusivamente para Uso Pessoal ou
+   Uso Educacional Individual;
+
+f) compartilhar o link do repositório, do site oficial ou de outros
+   canais oficiais do projeto.
+
+3. USO INSTITUCIONAL
+
+Sem autorização prévia e expressa do autor, não é permitido:
+
+a) instalar o Software em computadores de uma escola, curso,
+   universidade, empresa, instituição ou organização;
+
+b) utilizar o Software oficialmente em aulas, cursos, treinamentos,
+   laboratórios ou atividades institucionais;
+
+c) adotar o Software como ferramenta oficial ou permanente de ensino;
+
+d) distribuir o Software de forma institucional;
+
+e) criar uma atividade, projeto, curso ou programa institucional
+   baseado no Software sem autorização do autor.
+
+O fato de uma atividade possuir finalidade educacional não a torna
+automaticamente "Uso Educacional Individual". O uso realizado em nome
+de uma instituição é considerado Uso Institucional.
+
+4. USO COMERCIAL
+
+Sem autorização prévia e expressa do autor, não é permitido:
+
+a) vender ou revender o Software;
+
+b) cobrar pelo acesso ao Software;
+
+c) utilizar o Software em produtos ou serviços comerciais;
+
+d) incorporar o Software ou partes substanciais dele em produtos
+   comerciais;
+
+e) sublicenciar ou conceder direitos comerciais sobre o Software;
+
+f) utilizar o Software para gerar receita direta ou indireta.
+
+5. MODIFICAÇÕES
+
+É permitido modificar o Software exclusivamente para Uso Pessoal ou
+Uso Educacional Individual.
+
+A distribuição de versões modificadas é permitida somente quando a
+distribuição e o uso permanecerem dentro das condições desta licença.
+
+Nenhuma modificação concede automaticamente autorização para Uso
+Institucional ou Uso Comercial.
+
+6. ATRIBUIÇÃO
+
+Ao redistribuir o Software ou uma versão modificada dentro das
+permissões desta licença, o aviso de copyright e esta licença devem
+ser mantidos.
+
+Não é permitido remover ou alterar de forma enganosa os créditos de
+autoria do projeto.
+
+7. MARCA E IDENTIDADE
+
+Esta licença não concede qualquer direito sobre o nome "Pyrtugues",
+logotipos, identidade visual, marcas ou outros elementos de identidade
+do projeto, salvo autorização expressa do autor.
+
+8. AUTORIZAÇÃO ESPECIAL
+
+O autor pode conceder autorização adicional, por escrito, para usos
+que não sejam permitidos por esta licença.
+
+Essa autorização poderá estabelecer condições específicas, incluindo,
+entre outras, finalidade de uso, quantidade de instalações, duração,
+suporte, distribuição e condições comerciais.
+
+9. RESCISÃO
+
+Os direitos concedidos por esta licença serão automaticamente
+encerrados caso os seus termos sejam violados.
+
+Os direitos de pessoas que estejam utilizando o Software de acordo
+com esta licença permanecem sujeitos aos seus termos enquanto o uso
+estiver em conformidade com a licença.
+
+10. ISENÇÃO DE GARANTIA
+
+O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIAS DE QUALQUER TIPO,
+EXPRESSAS OU IMPLÍCITAS, NA MÁXIMA EXTENSÃO PERMITIDA PELA LEGISLAÇÃO
+APLICÁVEL.
+
+11. LIMITAÇÃO DE RESPONSABILIDADE
+
+NA MÁXIMA EXTENSÃO PERMITIDA PELA LEGISLAÇÃO APLICÁVEL, O AUTOR NÃO
+SERÁ RESPONSÁVEL POR QUAISQUER DANOS, PERDAS OU PREJUÍZOS DECORRENTES
+DO USO OU DA IMPOSSIBILIDADE DE USO DO SOFTWARE.
+
+12. RESERVA DE DIREITOS
+
+Todos os direitos não expressamente concedidos nesta licença são
+reservados ao autor.
+
+Para solicitar autorização de Uso Institucional ou Uso Comercial,
+entre em contato com o autor.
+
+Autor:
+Vinicius Caracciolo
+
+Projeto:
+Pyrtugues
+
+Ano:
+2026
