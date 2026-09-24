@@ -24,21 +24,21 @@ O README descreve o projeto como uma ponte para Python, e a Web usa a arquitetur
 
 ## Navegação
 
-- [01 — Introdução](01-introducao.md)
-- [02 — Primeiros passos](02-primeiros-passos.md)
-- [03 — Sintaxe](03-sintaxe.md)
-- [04 — Referência completa de comandos](04-comandos.md)
-- [05 — Como funciona o tradutor](05-tradutor.md)
-- [06 — Desktop](06-desktop.md)
-- [07 — Editor Web](07-web.md)
-- [08 — Erros e execução](08-erros.md)
-- [09 — Exemplos](09-exemplos.md)
-- [10 — Pyrtugues → Python](10-pyrtugues-python.md)
-- [11 — Para desenvolvedores](11-desenvolvedores.md)
-- [12 — FAQ](12-faq.md)
-- [13 — Licença](13-licenca.md)
-- [14 — Glossário](14-glossario.md)
-- [15 — Estado e limites documentados](15-estado-do-projeto.md)
+- [01 — Introdução](docs/01-introducao.md)
+- [02 — Primeiros passos](docs/02-primeiros-passos.md)
+- [03 — Sintaxe](docs/03-sintaxe.md)
+- [04 — Referência completa de comandos](docs/04-comandos.md)
+- [05 — Como funciona o tradutor](docs/05-tradutor.md)
+- [06 — Desktop](docs/06-desktop.md)
+- [07 — Editor Web](docs/07-web.md)
+- [08 — Erros e execução](docs/08-erros.md)
+- [09 — Exemplos](docs/09-exemplos.md)
+- [10 — Pyrtugues → Python](docs/10-pyrtugues-python.md)
+- [11 — Para desenvolvedores](docs/11-desenvolvedores.md)
+- [12 — FAQ](docs/12-faq.md)
+- [13 — Licença](docs/13-licenca.md)
+- [14 — Glossário](docs/14-glossario.md)
+- [15 — Estado e limites documentados](docs/15-estado-do-projeto.md)
 
 ## Versão e fonte
 
